@@ -8,8 +8,14 @@ return {
     "hrsh7th/cmp-nvim-lsp",         -- LSP Completions
     "hrsh7th/cmp-nvim-lua",         -- Lua Completions
     "hrsh7th/cmp-cmdline",          -- CommandLine Completions
+    "dmitmel/cmp-cmdline-history",  -- CommandLine History
     "L3MON4D3/LuaSnip",             -- Snippet Engine
     "rafamadriz/friendly-snippets", -- Bunch of Snippets
+    "tzachar/cmp-fuzzy-path",       -- Fuzzy path completions
+    "tzachar/cmp-fuzzy-buffer",     -- Fuzzy buffer completions
+    "hrsh7th/cmp-copilot",          -- copilot CMP
+    "hrsh7th/cmp-calc",             -- Calculations completions
+    "hrsh7th/cmp-nvim-lsp-signature-help",
     {
       "windwp/nvim-autopairs",
       config = function()
@@ -34,12 +40,20 @@ return {
         require("copilot_cmp").setup()
       end,
     },
+    {
+      'saecki/crates.nvim',
+      event = { "BufRead Cargo.toml" },
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      config = function()
+        require('crates').setup()
+      end,
+    },
   },
   config = function()
-    local cmp = require "cmp"
-    local luasnip = require "luasnip"
+    local cmp = require("cmp")
+    local luasnip = require("luasnip")
 
-    require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets/snipmate" }
+    require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.fn.stdpath("config") .. "/snippets/vim-snippets/snippets" }
     require("luasnip.loaders.from_vscode").lazy_load()
     -- require("luasnip.loaders.from_vscode").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets/vscode" }
     local has_words_before = function()
@@ -169,12 +183,17 @@ return {
         },
       },
       sources = {
+        { name = 'nvim_lsp_signature_help' },
         { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
+        { name = "cmdline" },
+        { name = 'cmdline_history' },
+        { name = "fuzzy_path" },
+        { name = "fuzzy_buffer" },
       },
       confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
@@ -199,25 +218,30 @@ return {
       },
     }
 
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = "cmdline" },
-      },
-      window = {
-        completion = cmp.config.window.bordered {
-          border = "rounded",
-          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:Search",
-          col_offset = -3,
-          side_padding = 1,
+    for _, cmd_type in ipairs({ ':', '/', '?', '@' }) do
+      cmp.setup.cmdline(cmd_type, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = "cmdline" },
+          { name = 'cmdline_history' },
+          { name = "fuzzy_path" },
+          { name = 'fuzzy_buffer' },
         },
-      },
-      formatting = {
-        format = function(_, vim_item)
-          vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
-          return vim_item
-        end,
-      },
-    })
+        window = {
+          completion = cmp.config.window.bordered {
+            border = "rounded",
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:Search",
+            col_offset = -3,
+            side_padding = 1,
+          },
+        },
+        formatting = {
+          format = function(_, vim_item)
+            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+            return vim_item
+          end,
+        },
+      })
+    end
   end,
 }
