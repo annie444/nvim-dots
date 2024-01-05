@@ -11,10 +11,20 @@ return {
     "dmitmel/cmp-cmdline-history",  -- CommandLine History
     "L3MON4D3/LuaSnip",             -- Snippet Engine
     "rafamadriz/friendly-snippets", -- Bunch of Snippets
-    "tzachar/cmp-fuzzy-path",       -- Fuzzy path completions
-    "tzachar/cmp-fuzzy-buffer",     -- Fuzzy buffer completions
-    "hrsh7th/cmp-copilot",          -- copilot CMP
-    "hrsh7th/cmp-calc",             -- Calculations completions
+    {
+      "tzachar/cmp-fuzzy-path",     -- Fuzzy path completions
+      dependencies = {
+        "tzachar/fuzzy.nvim"
+      },
+    },
+    {
+      "tzachar/cmp-fuzzy-buffer", -- Fuzzy buffer completions
+      dependencies = {
+        "tzachar/fuzzy.nvim"
+      },
+    },
+    "hrsh7th/cmp-copilot", -- copilot CMP
+    "hrsh7th/cmp-calc",    -- Calculations completions
     "hrsh7th/cmp-nvim-lsp-signature-help",
     {
       "windwp/nvim-autopairs",
