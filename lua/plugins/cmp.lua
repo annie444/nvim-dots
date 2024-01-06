@@ -23,8 +23,7 @@ return {
         "tzachar/fuzzy.nvim"
       },
     },
-    "hrsh7th/cmp-copilot", -- copilot CMP
-    "hrsh7th/cmp-calc",    -- Calculations completions
+    "hrsh7th/cmp-calc", -- Calculations completions
     "hrsh7th/cmp-nvim-lsp-signature-help",
     {
       "windwp/nvim-autopairs",
