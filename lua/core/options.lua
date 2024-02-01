@@ -4,7 +4,7 @@
 
 local options = {
   backup = false,         -- creates a backup file
-  conceallevel = 0,       -- so that `` is visible in markdown files
+  conceallevel = 2,       -- so that `` is visible in markdown files
   fileencoding = "utf-8", -- the encoding written to a file
   hidden = true,          -- required to keep multiple buffers and open multiple buffers
   ignorecase = true,      -- ignore case in search patterns
