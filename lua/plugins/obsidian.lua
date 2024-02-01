@@ -38,7 +38,7 @@ return {
       {
         name = "Notes",
         -- path = "~/second-brain",
-        path = "/Users/annieehler/Nextcloud-Personal/Documents/Obsidian",
+        path = "~/Nextcloud-Work/Documents/Obsidian",
       },
     },
     detect_cwd = false,

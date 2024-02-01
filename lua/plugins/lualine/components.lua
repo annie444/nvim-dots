@@ -210,12 +210,8 @@ M.filename = {
 }
 
 M.showcmd = {
-  function()
-    return require("noice").api.status.command.get()
-  end,
-  cond = function()
-    return package.loaded["noice"] and require("noice").api.status.command.has()
-  end,
+  require("noice").api.statusline.mode.get,
+  cond = require("noice").api.statusline.mode.has,
 }
 
 M.has_updates = {
