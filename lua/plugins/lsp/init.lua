@@ -59,8 +59,6 @@ return {
           "jsonls",
           "lua_ls",
           "clangd",
-          "black",
-          "isort",
           "intelephense",
           "cssls",
           "html",
