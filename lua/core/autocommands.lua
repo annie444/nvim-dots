@@ -10,13 +10,13 @@ local augroup = vim.api.nvim_create_augroup
 local general = augroup("General Settings", { clear = true })
 
 
-autocmd( "BufNewFile", {
-  pattern = {"*.md"},
+autocmd("BufNewFile", {
+  pattern = { "*.md" },
   command = ":r! echo \\# %:t:r",
 })
 
-autocmd( "BufNewFile", {
-  pattern = {"*.md"},
+autocmd("BufNewFile", {
+  pattern = { "*.md" },
   command = ":norm kddo",
 })
 
@@ -29,11 +29,11 @@ autocmd("VimEnter", {
     if directory then
       vim.cmd.cd(data.file)
       -- open the tree
-      require("nvim-tree.api").tree.open()
+      require("neo-tree").action.focus()
     end
   end,
   group = general,
-  desc = "Open NvimTree when it's a Directory",
+  desc = "Open NeoTree when it's a Directory",
 })
 
 -- Disable foldcolumn and statuscolumn in lspsaga outline

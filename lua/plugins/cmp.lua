@@ -8,17 +8,10 @@ return {
     "hrsh7th/cmp-nvim-lsp",         -- LSP Completions
     "hrsh7th/cmp-nvim-lua",         -- Lua Completions
     "hrsh7th/cmp-cmdline",          -- CommandLine Completions
-    "dmitmel/cmp-cmdline-history",  -- CommandLine History
     "L3MON4D3/LuaSnip",             -- Snippet Engine
     "rafamadriz/friendly-snippets", -- Bunch of Snippets
     {
-      "tzachar/cmp-fuzzy-path",     -- Fuzzy path completions
-      dependencies = {
-        "tzachar/fuzzy.nvim"
-      },
-    },
-    {
-      "tzachar/cmp-fuzzy-buffer", -- Fuzzy buffer completions
+      "tzachar/cmp-fuzzy-buffer",   -- Fuzzy buffer completions
       dependencies = {
         "tzachar/fuzzy.nvim"
       },
@@ -201,7 +194,6 @@ return {
         { name = "path" },
         { name = "cmdline" },
         { name = 'cmdline_history' },
-        { name = "fuzzy_path" },
         { name = "fuzzy_buffer" },
       },
       confirm_opts = {
