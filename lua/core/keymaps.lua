@@ -38,8 +38,6 @@ local function backward_search()
 end
 
 
-
-
 local keymaps = {
   normal_mode = {
     ['gau'] = { cmd = function() require('textcase').current_word('to_upper_case') end },

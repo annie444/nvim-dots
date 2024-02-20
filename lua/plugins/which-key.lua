@@ -21,7 +21,7 @@ return {
     local mappings = {
       ["r"] = { ":%d+<cr>", "Remove All Text" },
       ["y"] = { ":%y+<cr>", "Yank All Text" },
-      ["e"] = { ":NvimTreeToggle<cr>", "Explorer" },
+      ["e"] = { ":NeoTree<cr>", "Explorer" },
       ["D"] = { toggle_distraction_free, "Distraction Free" },
       ["q"] = { ":qa!<cr>", "Quit" },
       ["c"] = { ":Bdelete!<cr>", "Close Buffer" },
