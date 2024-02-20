@@ -115,7 +115,7 @@ return {
         -- `Enter` key to confirm completion
         -- Accept currently selected item. If none selected, `select` first item.
         -- Set `select` to `false` to only confirm explicitly selected items.
-        ["<CR>"] = cmp.mapping.confirm { select = false },
+        --["<CR>"] = cmp.mapping.confirm { select = false },
         -- Ctrl+Space to trigger completion menu
         ["<C-Space>"] = cmp.mapping.complete(),
         -- Navigate between snippet placeholder
