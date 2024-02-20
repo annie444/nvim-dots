@@ -54,10 +54,8 @@ return {
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-
-    require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.fn.stdpath("config") .. "/snippets/vim-snippets/snippets" }
+    require("luasnip.loaders.from_snipmate").lazy_load()
     require("luasnip.loaders.from_vscode").lazy_load()
-    -- require("luasnip.loaders.from_vscode").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets/vscode" }
     local has_words_before = function()
       if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
         return false
@@ -65,7 +63,6 @@ return {
       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
       return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match "^%s*$" == nil
     end
-
     local kind_icons = {
       Text = "󰉿",
       Table = "",
@@ -99,7 +96,6 @@ return {
       Tag = "",
       Null = "󰟢",
     }
-
     cmp.setup {
       completion = {
         completeopt = "menu,menuone,noselect",
@@ -109,7 +105,6 @@ return {
           luasnip.lsp_expand(args.body) -- For `luasnip` users.
         end,
       },
-
       mapping = cmp.mapping.preset.insert {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
         ["<C-j>"] = cmp.mapping.select_next_item(),
@@ -121,14 +116,11 @@ return {
         -- Accept currently selected item. If none selected, `select` first item.
         -- Set `select` to `false` to only confirm explicitly selected items.
         ["<CR>"] = cmp.mapping.confirm { select = false },
-
         -- Ctrl+Space to trigger completion menu
         ["<C-Space>"] = cmp.mapping.complete(),
-
         -- Navigate between snippet placeholder
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1)),
         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1)),
-
         -- Scroll up and down in the completion documentation
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
@@ -171,17 +163,6 @@ return {
         priority_weight = 2,
         comparators = {
           require("copilot_cmp.comparators").prioritize,
-          -- Below is the default comparitor list and order for nvim-cmp
-          cmp.config.compare.offset,
-          -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-          cmp.config.compare.exact,
-          cmp.config.compare.score,
-          cmp.config.compare.recently_used,
-          cmp.config.compare.locality,
-          cmp.config.compare.kind,
-          cmp.config.compare.sort_text,
-          cmp.config.compare.length,
-          cmp.config.compare.order,
         },
       },
       sources = {
