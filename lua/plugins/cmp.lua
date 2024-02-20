@@ -225,7 +225,6 @@ return {
         sources = {
           { name = "cmdline" },
           { name = 'cmdline_history' },
-          { name = "fuzzy_path" },
           { name = 'fuzzy_buffer' },
         },
         window = {

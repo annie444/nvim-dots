@@ -29,7 +29,7 @@ autocmd("VimEnter", {
     if directory then
       vim.cmd.cd(data.file)
       -- open the tree
-      require("neo-tree").action.focus()
+      require("neo-tree").action.open()
     end
   end,
   group = general,
