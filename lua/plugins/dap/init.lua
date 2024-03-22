@@ -41,8 +41,10 @@ return {
     which_key_add(mappings, "n")
   end,
   dependencies = {
+    { "nvim-neotest/nvim-nio" },
     {
       "rcarriga/nvim-dap-ui",
+      dependencies = { "nvim-neotest/nvim-nio" },
       config = function()
         require("dapui").setup {
           layouts = {
@@ -82,7 +84,7 @@ return {
           "js-debug-adapter",
           "php-debug-adapter"
         }
-        require ('mason-nvim-dap').setup({
+        require('mason-nvim-dap').setup({
           ensure_installed = debug_adapters,
           handlers = {}, -- sets up dap in the predefined manner
         })
