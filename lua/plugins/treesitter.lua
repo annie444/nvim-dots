@@ -16,6 +16,7 @@ return {
     "windwp/nvim-ts-autotag",
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-treesitter/nvim-treesitter-refactor",
+    "IndianBoy42/tree-sitter-just",
     {
       "nvim-treesitter/nvim-treesitter-context",
       opts = {
@@ -65,7 +66,7 @@ return {
         "rust",
         "regex",
         "bash",
-      },               -- one of "all" or a list of languages
+      }, -- one of "all" or a list of languages
       highlight = {
         enable = true,
       },
@@ -148,5 +149,6 @@ return {
         },
       },
     }
+    require('tree-sitter-just').setup({})
   end,
 }
