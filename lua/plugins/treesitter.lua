@@ -16,7 +16,6 @@ return {
     "windwp/nvim-ts-autotag",
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-treesitter/nvim-treesitter-refactor",
-    "IndianBoy42/tree-sitter-just",
     {
       "nvim-treesitter/nvim-treesitter-context",
       opts = {
@@ -149,6 +148,5 @@ return {
         },
       },
     }
-    require('tree-sitter-just').setup({})
   end,
 }
