@@ -10,6 +10,12 @@ else
   -- Theme configs are can be found on lua/plugins/theme
   pcall(require, "plugins.theme." .. name)
 
+  vim.cmd [[
+    set spell
+    syntax enable
+    filetype plugin indent on
+  ]]
+
   -- Set the theme
   vim.cmd.colorscheme(name)
 end
