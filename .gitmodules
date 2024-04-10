@@ -1,3 +1,4 @@
 [submodule "snippets/vim-snippets"]
 	path = snippets/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+	branch = master
