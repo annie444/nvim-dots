@@ -14,6 +14,8 @@ else
     set spell
     syntax enable
     filetype plugin indent on
+    set modeline
+    set modelines=5
   ]]
 
   -- Set the theme
