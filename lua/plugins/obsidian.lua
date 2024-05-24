@@ -53,20 +53,18 @@ return {
     },
     notes_subdir = "Notes",
     log_level = vim.log.levels.INFO,
-    new_notes_location = "current_dir",
+    new_notes_location = "notes_subdir",
     completion = {
       nvim_cmp = true,
       min_chars = 2,
     },
-    wiki_link_func = function(opts)
-      if opts.id == nil then
-        return string.format("[[%s]]", opts.label)
-      elseif opts.label ~= opts.id then
-        return string.format("[[%s|%s]]", opts.id, opts.label)
-      else
-        return string.format("[[%s]]", opts.id)
-      end
-    end,
+    -- Optional, customize how wiki links are formatted. You can set this to one of:
+    --  * "use_alias_only", e.g. '[[Foo Bar]]'
+    --  * "prepend_note_id", e.g. '[[foo-bar|Foo Bar]]'
+    --  * "prepend_note_path", e.g. '[[foo-bar.md|Foo Bar]]'
+    --  * "use_path_only", e.g. '[[foo-bar.md]]'
+    -- Or you can set it to a function that takes a table of options and returns a string, like this:
+    wiki_link_func = "prepend_note_id",
     templates = {
       subdir = "Templates",
       date_format = "%Y-%m-%d-%a",
@@ -74,6 +72,8 @@ return {
       -- A map for custom variables, the key should be the variable and the value a function
       substitutions = {},
     },
+    -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
+    -- way then set 'mappings = {}'.
     -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
     -- way then set 'mappings = {}'.
     mappings = {
@@ -91,9 +91,18 @@ return {
         end,
         opts = { buffer = true },
       },
+      -- Smart action depending on context, either follow link or toggle checkbox.
+      ["<cr>"] = {
+        action = function()
+          return require("obsidian").util.smart_action()
+        end,
+        opts = { buffer = true, expr = true },
+      }
     },
 
-    -- Optional, customize how names/IDs for new notes are created.
+    -- Optional, customize how note IDs are generated given an optional title.
+    ---@param title string|?
+    ---@return string
     note_id_func = function(title)
       -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
       -- In this case a note with the title 'My new note' will be given an ID that looks
@@ -116,6 +125,7 @@ return {
     disable_frontmatter = false,
 
     -- Optional, alternatively you can customize the frontmatter data.
+    ---@return table
     note_frontmatter_func = function(note)
       -- This is equivalent to the default frontmatter function.
       local out = { id = note.id, aliases = note.aliases, tags = note.tags }
@@ -130,12 +140,16 @@ return {
     end,
     -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
     -- URL it will be ignored but you can customize this behavior here.
+    ---@param url string
     follow_url_func = function(url)
       -- Open the URL in the default web browser.
       vim.fn.jobstart({ "open", url }) -- Mac OS
       -- vim.fn.jobstart({"xdg-open", url})  -- linux
     end,
 
+    -- Optional, customize how note file names are generated given the ID, target directory, and title.
+    ---@param spec { id: string, dir: obsidian.Path, title: string|? }
+    ---@return string|obsidian.Path The full path to the new note.
     note_path_func = function(spec)
       -- This is equivalent to the default behavior.
       local path = spec.dir / tostring(spec.id)
@@ -148,6 +162,8 @@ return {
 
     preferred_link_style = "wiki",
 
+    -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
+    ---@return string
     image_name_func = function()
       -- Prefix image names with timestamp.
       return string.format("%s-", os.time())
