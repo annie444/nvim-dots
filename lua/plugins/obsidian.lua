@@ -41,31 +41,32 @@ return {
         path = "~/Nextcloud-Work/Documents/Obsidian",
       },
     },
-    detect_cwd = false,
+    daily_notes = {
+      -- Optional, if you keep daily notes in a separate directory.
+      folder = "Notes/Dailies",
+      -- Optional, if you want to change the date format for the ID of daily notes.
+      date_format = "%Y-%m-%d",
+      -- Optional, if you want to change the date format of the default alias of daily notes.
+      alias_format = "%B %-d, %Y",
+      -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+      template = "0B_01_Periodics/Daily.md",
+    },
     notes_subdir = "Notes",
     log_level = vim.log.levels.INFO,
+    new_notes_location = "current_dir",
     completion = {
       nvim_cmp = true,
       min_chars = 2,
-      -- Where to put new notes created from completion. Valid options are
-      --  * "current_dir" - put new notes in same directory as the current buffer.
-      --  * "notes_subdir" - put new notes in the default notes subdirectory.
-      new_notes_location = "current_dir",
-      -- Control how wiki links are completed with these (mutually exclusive) options:
-      --
-      -- 1. Whether to add the note ID during completion.
-      -- E.g. "[[Foo" completes to "[[foo|Foo]]" assuming "foo" is the ID of the note.
-      -- Mutually exclusive with 'prepend_note_path' and 'use_path_only'.
-      prepend_note_id = true,
-      -- 2. Whether to add the note path during completion.
-      -- E.g. "[[Foo" completes to "[[notes/foo|Foo]]" assuming "notes/foo.md" is the path of the note.
-      -- Mutually exclusive with 'prepend_note_id' and 'use_path_only'.
-      prepend_note_path = false,
-      -- 3. Whether to only use paths during completion.
-      -- E.g. "[[Foo" completes to "[[notes/foo]]" assuming "notes/foo.md" is the path of the note.
-      -- Mutually exclusive with 'prepend_note_id' and 'prepend_note_path'.
-      use_path_only = false,
     },
+    wiki_link_func = function(opts)
+      if opts.id == nil then
+        return string.format("[[%s]]", opts.label)
+      elseif opts.label ~= opts.id then
+        return string.format("[[%s|%s]]", opts.id, opts.label)
+      else
+        return string.format("[[%s]]", opts.id)
+      end
+    end,
     templates = {
       subdir = "Templates",
       date_format = "%Y-%m-%d-%a",
@@ -127,15 +128,6 @@ return {
       end
       return out
     end,
-
-    -- Optional, customize the backlinks interface.
-    backlinks = {
-      -- The default height of the backlinks pane.
-      height = 10,
-      -- Whether or not to wrap lines.
-      wrap = true,
-    },
-
     -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
     -- URL it will be ignored but you can customize this behavior here.
     follow_url_func = function(url)
@@ -143,6 +135,24 @@ return {
       vim.fn.jobstart({ "open", url }) -- Mac OS
       -- vim.fn.jobstart({"xdg-open", url})  -- linux
     end,
+
+    note_path_func = function(spec)
+      -- This is equivalent to the default behavior.
+      local path = spec.dir / tostring(spec.id)
+      return path:with_suffix(".md")
+    end,
+
+    markdown_link_func = function(opts)
+      return require("obsidian.util").markdown_link(opts)
+    end,
+
+    preferred_link_style = "wiki",
+
+    image_name_func = function()
+      -- Prefix image names with timestamp.
+      return string.format("%s-", os.time())
+    end,
+
 
     -- Optional, set to true if you use the Obsidian Advanced URI plugin.
     -- https://github.com/Vinzent03/obsidian-advanced-uri
@@ -168,6 +178,19 @@ return {
     -- 2. "vsplit" - to open in a vertical split if there's not already a vertical split
     -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
     open_notes_in = "current",
+
+    picker = {
+      -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
+      name = "telescope.nvim",
+      -- Optional, configure key mappings for the picker. These are the defaults.
+      -- Not all pickers support all mappings.
+      mappings = {
+        -- Create a new note from your query.
+        new = "<C-x>",
+        -- Insert a link to the selected note.
+        insert_link = "<C-l>",
+      },
+    },
 
     -- Optional, configure additional syntax highlighting / extmarks.
     ui = {
@@ -214,29 +237,13 @@ return {
       -- It takes two arguments, the `obsidian.Client` and a plenary `Path` to the image file.
       -- This is the default implementation.
       ---@param client obsidian.Client
-      ---@param path Path the absolute path to the image file
+      ---@param path obsidian.Path the absolute path to the image file
       ---@return string
       img_text_func = function(client, path)
-        local link_path
-        local vault_relative_path = client:vault_relative_path(path)
-        if vault_relative_path ~= nil then
-          -- Use relative path if the image is saved in the vault dir.
-          link_path = vault_relative_path
-        else
-          -- Otherwise use the absolute path.
-          link_path = tostring(path)
-        end
-        local display_name = vim.fs.basename(link_path)
-        return string.format("![%s](%s)", display_name, link_path)
+        path = client:vault_relative_path(path) or path
+        return string.format("![%s](%s)", path.name, path)
       end,
-    },
 
-    -- Optional, set the YAML parser to use. The valid options are:
-    --  * "native" - uses a pure Lua parser that's fast but potentially misses some edge cases.
-    --  * "yq" - uses the command-line tool yq (https://github.com/mikefarah/yq), which is more robust
-    --    but much slower and needs to be installed separately.
-    -- In general you should be using the native parser unless you run into a bug with it, in which
-    -- case you can temporarily switch to the "yq" parser until the bug is fixed.
-    yaml_parser = "native",
+    },
   },
 };
