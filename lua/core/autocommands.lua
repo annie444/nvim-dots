@@ -53,10 +53,9 @@ autocmd("User", {
     -- a hacky way to reload the pdf in the terminal
     -- when it has changed
     if vim.g.term_pdf_vierer_open and vim.g.tex_compiles_successfully then
-      local command = { "'", "conda", "activate", "neovim", "&&", "termpdf.py",
-        vim.api.nvim_call_function("expand", { "%:r" }) .. ".pdf", "'\r'", "'" }
-      local kitty = { "kitty", "@", "send-text", "--match", "title:termpdf" }
-      vim.system(kitty .. command)
+      local kitty = { "kitty", "@", "send-text", "--match", "title:termpdf", "'", "conda", "activate", "neovim", "&&",
+        "termpdf.py", vim.api.nvim_call_function("expand", { "%:r" }) .. ".pdf", "'\r'", "'" }
+      vim.system(kitty)
     end
   end,
 })
