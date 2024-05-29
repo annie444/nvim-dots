@@ -20,15 +20,17 @@ else
 
   function VimtexPDFToggle()
     if vim.g.term_pdf_vierer_open then
-      vim.fn.system("kitty @ close-window --match title:termpdf")
+      vim.notify("Closing the pdf viewer", vim.log.levels.WARN)
+      vim.system({ "kitty", "@", "close-window", "--match", "title:termpdf" })
       vim.g.term_pdf_vierer_open = false
     elseif vim.g.tex_compiles_successfully then
-      vim.fn.system("kitty @ launch --location=vsplit --cwd=current --title=termpdf")
+      vim.notify("Opening the pdf viewer", vim.log.levels.WARN)
+      vim.system({ "kitty", "@", "launch", "--location=vsplit", "--cwd=current", "--title=termpdf" })
 
-      local command = "conda activate neovim && termpdf.py " ..
-          vim.api.nvim_call_function("expand", { "%:r" }) .. ".pdf" .. "'\r'"
-      local kitty = "kitty @ send-text --match title:termpdf "
-      vim.fn.system(kitty .. command)
+      local command = { "'", "conda", "activate", "neovim", "&&", "termpdf.py", vim.api.nvim_call_function("expand",
+        { "%:r" }) .. ".pdf", "'\r'", "'" }
+      local kitty = { "kitty", "@", "send-text", "--match", "title:termpdf" }
+      vim.system(kitty .. command)
       vim.g.term_pdf_vierer_open = true
     end
   end
