@@ -5,13 +5,6 @@ return {
   config = function()
     require("plugins.lsp.handlers").setup()
   end,
-  init_options = {
-    userLanguages = {
-      eelixir = "html-eex",
-      eruby = "erb",
-      rust = "html",
-    },
-  },
   dependencies = {
     {
       "folke/neodev.nvim",
@@ -32,8 +25,10 @@ return {
     },
     {
       "creativenull/efmls-configs-nvim",
-      version = "v1.x.x", -- version is optional, but recommended
       event = { "BufReadPost", "BufNewFile" },
+      dependencies = {
+        "williamboman/mason.nvim"
+      }
     },
     {
       "williamboman/mason.nvim",
