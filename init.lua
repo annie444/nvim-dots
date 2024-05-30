@@ -28,6 +28,7 @@ else
       vim.notify("Opening the PDF viewer", vim.log.levels.INFO, { title = "TeX" })
       local kitty = { "kitty", "@", "send-text", "--match", "title:termpdf", vim.g.python3_host_prog, "-m", "termpdf",
         vim.api.nvim_call_function("expand", { "%:r" }) .. ".pdf", '\r' }
+      os.execute("sleep 0.5")
       vim.system(kitty)
       vim.g.term_pdf_vierer_open = true
     end
