@@ -10,7 +10,6 @@ if vim.fn.isdirectory(lazypath) == 0 then
     lazypath,
   }
 end
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 vim.opt.runtimepath:prepend(lazypath)
 

@@ -34,13 +34,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   opts = {
-    workspaces = {
-      {
-        name = "Notes",
-        -- path = "~/second-brain",
-        path = "~/Nextcloud-Work/Documents/Obsidian",
-      },
-    },
+    workspaces = vim.g.obsidian_workspaces,
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
       folder = "Notes/Dailies",
