@@ -27,7 +27,7 @@ else
       vim.notify("Opening the pdf viewer", vim.log.levels.WARN)
       vim.system({ "kitty", "@", "launch", "--location=vsplit", "--cwd=current", "--title=termpdf" })
 
-      local kitty = { "kitty", "@", "send-text", "--match", "title:termpdf", "conda activate neovim && termpdf.py " ..
+      local kitty = { "kitty", "@", "send-text", "--match", "title:termpdf", vim.g.python3_host_prog .. " -m termpdf " ..
       vim.api.nvim_call_function("expand", { "%:r" }) .. ".pdf" .. '\r' }
       vim.system(kitty)
       vim.g.term_pdf_vierer_open = true
