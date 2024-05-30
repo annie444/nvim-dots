@@ -28,7 +28,7 @@ else
       vim.system({ "kitty", "@", "launch", "--location=vsplit", "--cwd=current", "--title=termpdf" })
 
       local kitty = { "kitty", "@", "send-text", "--match", "title:termpdf", "conda activate neovim && termpdf.py " ..
-      vim.api.nvim_call_function("expand", { "%:r" }) .. ".pdf" .. "'\r'" }
+      vim.api.nvim_call_function("expand", { "%:r" }) .. ".pdf" .. '\r' }
       vim.system(kitty)
       vim.g.term_pdf_vierer_open = true
     end
