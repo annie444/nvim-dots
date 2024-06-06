@@ -4,8 +4,6 @@ These are my personal dotfiles used to configure neovim as a fully-fledged IDE w
 
 ![](https://github.com/annie444/nvim-dots/assets/6550634/16e3bfef-ad2a-4bba-b836-75bfe47b8b39)
 
-![](https://private-user-images.githubusercontent.com/6550634/337453511-16e3bfef-ad2a-4bba-b836-75bfe47b8b39.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTc3MTIyMTIsIm5iZiI6MTcxNzcxMTkxMiwicGF0aCI6Ii82NTUwNjM0LzMzNzQ1MzUxMS0xNmUzYmZlZi1hZDJhLTRiYmEtYjgzNi03NWJmZTQ3YjhiMzkucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI0MDYwNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNDA2MDZUMjIxMTUyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZmNlODA1YTEyZTI1YTk1ZmQ4NWZiMTc5OTdjMjA3YjRjZDIyMzNhNTU3OWQzMDI5M2E0ZGE0ODMzNWY4MWQyNCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.ccBn6gL9buUYa-2aCBb4hAwzaDFItBtEw5kXKm23rgs)
-
 ## Requirements
 
 Some of these plugins require you to use the Nightly version of neovim. However, I've been able to get them to work reliably with **neovim>=0.9.5** with **LuaJIT>=2.0**. To check your local neovim version, run `nvim -V1 -v`. If your OS doesn't have a recent enough neovim package, you can manually install the latest version in the [neovim repository releases](https://github.com/neovim/neovim/tags).
