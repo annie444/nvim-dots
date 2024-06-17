@@ -12,12 +12,12 @@ return {
       config = function()
         require("neodev").setup {
           library = {
-            enabled = true,    -- when not enabled, neodev will not change any settings to the LSP server
-            runtime = true,    -- runtime path
-            types = true,      -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-            plugins = true,    -- installed opt or start plugins in packpath
+            enabled = true,    -- When not enabled, neodev will not change any settings to the LSP server
+            runtime = true,    -- Runtime path
+            types = true,      -- Full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
+            plugins = true,    -- Installed opt or start plugins in packpath
           },
-          setup_jsonls = true, -- configures jsonls to provide completion for project specific .luarc.json files
+          setup_jsonls = true, -- Configures jsonls to provide completion for project specific .luarc.json files
           lspconfig = false,
           pathStrict = true,
         }
@@ -74,6 +74,8 @@ return {
           "elixirls",
           "intelephense",
           "efm",
+          "pylsp",
+          "pyright",
         }
 
         mason.setup {
