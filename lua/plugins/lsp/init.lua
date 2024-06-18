@@ -74,7 +74,6 @@ return {
           "elixirls",
           "intelephense",
           "efm",
-          "pylsp",
           "pyright",
         }
 
