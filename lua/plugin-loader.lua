@@ -16,7 +16,7 @@ vim.opt.runtimepath:prepend(lazypath)
 local opts = {
   root = vim.fn.stdpath("data") .. "/lazy",
   defaults = {
-    lazy = true,
+    lazy = false,
     version = "*",
   },
   vim.fn.stdpath("data") .. "/lazy-lock.json",
