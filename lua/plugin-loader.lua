@@ -14,14 +14,47 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 local opts = {
-  lockfile = vim.fn.stdpath "data" .. "/lazy-lock.json", -- lockfile generated after running update.
+  root = vim.fn.stdpath("data") .. "/lazy",
+  defaults = {
+    lazy = true,
+    version = "*",
+  },
+  vim.fn.stdpath("data") .. "/lazy-lock.json",
   concurrency = 10, ---@type number limit the maximum amount of concurrent tasks
+  git = {
+    -- defaults for the `Lazy log` command
+    -- log = { "--since=3 days ago" }, -- show commits from the last 3 days
+    log = { "-8" }, -- show the last 8 commits
+    timeout = 120,  -- kill processes that take more than 2 minutes
+    url_format = "https://github.com/%s.git",
+    -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
+    -- then set the below to false. This should work, but is NOT supported and will
+    -- increase downloads a lot.
+    filter = true,
+  },
+  pkg = {
+    enabled = true,
+    cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
+    versions = true, -- Honor versions in pkg sources
+    -- the first package source that is found for a plugin will be used.
+    sources = {
+      "lazy",
+      "rockspec",
+      "packspec",
+    },
+  },
+  rocks = {
+    root = vim.fn.stdpath("data") .. "/lazy-rocks",
+    server = "https://nvim-neorocks.github.io/rocks-binaries/",
+  },
   install = {
     -- install missing plugins on startup. This doesn't increase startup time.
     missing = true,
     -- try to load one of these colorschemes when starting an installation during startup
     colorscheme = { "nightly", "habamax" },
   },
+  browser = nil, ---@type string?
+  throttle = 20,
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
     size = { width = 0.8, height = 0.8 },
@@ -69,6 +102,21 @@ local opts = {
   -- lazy can generate helptags from the headings in markdown readme files,
   -- so :help works even for plugins that don't have vim docs.
   -- when the readme opens with :help it will be correctly displayed as markdown
+  readme = {
+    enabled = true,
+    root = vim.fn.stdpath("state") .. "/lazy/readme",
+    files = { "README.md", "lua/**/README.md" },
+    -- only generate markdown helptags for plugins that dont have docs
+    skip_if_doc_exists = true,
+  },
+  state = vim.fn.stdpath("state") .. "/lazy/state.json",
+  profiling = {
+    -- Enables extra stats on the debug tab related to the loader cache.
+    -- Additionally gathers stats about all package.loaders
+    loader = true,
+    -- Track each new require in the Lazy profiling tab
+    require = true,
+  },
   performance = {
     cache = {
       enabled = true,
