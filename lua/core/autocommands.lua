@@ -20,6 +20,14 @@ autocmd("BufNewFile", {
   command = ":norm kddo",
 })
 
+--  e.g. ~/.local/share/chezmoi/*
+autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { os.getenv("HOME") .. "/.local/share/chezmoi/*" },
+  callback = function()
+    vim.schedule(require("chezmoi.commands.__edit").watch)
+  end,
+})
+
 autocmd("VimEnter", {
   callback = function(data)
     -- buffer is a directory
