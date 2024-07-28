@@ -1,5 +1,4 @@
 local alpha = require("alpha")
-local dashboard = require(".dashboard")
 
 local logo = [[
     ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
