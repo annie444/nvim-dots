@@ -172,10 +172,6 @@ function _G.which_key_add(mappings, mode)
       separator = "➜", -- symbol used between a key and it's label
       group = "+", -- symbol prepended to a group
     },
-    popup_mappings = {
-      scroll_down = "<c-d>", -- binding to scroll down inside the popup
-      scroll_up = "<c-u>",   -- binding to scroll up inside the popup
-    },
     win = {
       border = "none",          -- none, single, double, shadow
       padding = { 2, 0, 2, 0 }, -- extra window padding [top, right, bottom, left]
@@ -192,12 +188,11 @@ function _G.which_key_add(mappings, mode)
   }
 
   local opts = {
-    mode = mode,    -- NORMAL mode
-    prefix = "<leader>",
-    buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true,  -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true,  -- use `nowait` when creating keymaps
+    mode = mode,   -- NORMAL mode
+    buffer = nil,  -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    remap = false, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
   }
 
   which_key.setup(setup)
