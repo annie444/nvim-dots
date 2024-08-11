@@ -1,5 +1,10 @@
 return {
   "folke/which-key.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons",
+    { 'echasnovski/mini.icons', version = false },
+  },
   module = true,
   cmd = "WhichKey",
   keys = "<leader>",
@@ -55,12 +60,13 @@ return {
       { "<leader>nu", ":Update<cr>",       desc = "Update" },
       { "<leader>nm", ":messages<cr>",     desc = "Messages" },
       { "<leader>nh", ":checkhealth<cr>",  desc = "Health" },
-      { "<leader>nv",
+      {
+        "<leader>nv",
         function()
           local version = vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
           return vim.notify(version, vim.log.levels.INFO, { title = "Neovim Version" })
         end,
-        "Version",
+        desc = "Version",
       },
       {
         "<leader>nc",
@@ -147,12 +153,10 @@ return {
       { "<leader>fH", ":Telescope highlights<cr>",                                                      desc = "Highlights" },
 
       { "<leader>t",  group = "Terminal" },
-      { "<leadertt",  ":ToggleTerm<cr>",                                                                desc = "Toggle" },
-      { "<leaderth",  ":ToggleTerm size=10 direction=horizontal<cr>",                                   desc = "Horizontal" },
-      { "<leadertv",  ":ToggleTerm size=50 direction=vertical<cr>",                                     desc = "Vertical" },
-      { "<leadertf",  ":ToggleTerm direction=float<cr>",                                                desc = "Float" },
-      { "<leaderth",  ":ToggleTerm size=10 direction=horizontal<cr>",                                   desc = "Horizontal" },
-      { "<leadertv",  ":ToggleTerm size=50 direction=vertical<cr>",                                     desc = "Vertical" },
+      { "<leader>tt", ":ToggleTerm<cr>",                                                                desc = "Toggle" },
+      { "<leader>th", ":ToggleTerm size=10 direction=horizontal<cr>",                                   desc = "Horizontal" },
+      { "<leader>tv", ":ToggleTerm size=50 direction=vertical<cr>",                                     desc = "Vertical" },
+      { "<leader>tf", ":ToggleTerm direction=float<cr>",                                                desc = "Float" },
     }
 
     which_key_add(mappings, "n")
