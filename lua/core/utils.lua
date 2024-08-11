@@ -184,19 +184,20 @@ function _G.which_key_add(mappings, mode)
       align = "left",                        -- align columns left, center or right
     },
     show_help = true,                        -- show help message on the command line when the popup is visible
-    triggers = { "<auto>", mode = "nxsot" }, -- automatically setup triggers
+    triggers = {
+      { "<auto>", mode = "nxsot" }, -- automatically setup triggers
+    }
   }
 
   local opts = {
     mode = mode,   -- NORMAL mode
-    buffer = nil,  -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     remap = false, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
   }
 
   which_key.setup(setup)
-  which_key.register(mappings, opts)
+  which_key.add(mappings, opts)
 end
 
 -- HUUUUUUUUUUUUUUUUUUUUUUUGE kudos and thanks to
