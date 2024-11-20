@@ -1,4 +1,4 @@
-local dap = require "dap"
+local dap = require("dap")
 dap.adapters.go = {
   type = "executable",
   command = "node",

@@ -1,5 +1,5 @@
-local dap = require "dap"
-local path = vim.fn.stdpath "data" .. "/mason/packages/debugpy/venv/Scripts/python"
+local dap = require("dap")
+local path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/Scripts/python"
 dap.adapters.python = function(cb, config)
   if config.request == "attach" then
     ---@diagnostic disable-next-line: undefined-field

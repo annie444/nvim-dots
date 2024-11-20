@@ -4,29 +4,21 @@ return {
   "mfussenegger/nvim-dap",
   event = { "BufReadPost", "BufNewFile" },
   config = function()
-    local dap = require "dap"
-    local dapui = require "dapui"
+    local dap = require("dap")
+    local dapui = require("dapui")
     vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
     end
 
-    -- dap.listeners.before.event_terminated["dapui_config"] = function()
-    --   dapui.close()
-    -- end
-
-    -- dap.listeners.before.event_exited["dapui_config"] = function()
-    --   dapui.close()
-    -- end
-
     -- NOTE: Make sure to install the needed files/exectubles through mason
-    require "plugins.dap.cpptools"
-    require "plugins.dap.java-debug"
-    require "plugins.dap.node-debug2"
-    require "plugins.dap.debugpy"
-    require "plugins.dap.delve"
-    require "plugins.dap.js-debug"
+    require("plugins.dap.cpptools")
+    require("plugins.dap.java-debug")
+    require("plugins.dap.node-debug2")
+    require("plugins.dap.debugpy")
+    require("plugins.dap.delve")
+    require("plugins.dap.js-debug")
     local mappings = {
       { "<leader>d",  group = "Dap",                               nowait = true,      remap = false },
       { "<leader>dc", ":lua require'dap'.continue()<cr>",          desc = "Continue",  nowait = true, remap = false },

@@ -1,4 +1,4 @@
-local dap = require "dap"
+local dap = require("dap")
 local executable = ""
 
 if vim.fn.has "win32" == 1 then

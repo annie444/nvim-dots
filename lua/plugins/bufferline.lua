@@ -15,8 +15,8 @@ return {
       close_command = ":Bdelete!",
       right_mouse_command = ":Bdelete!",
       offsets = {
-        { filetype = "NvimTree", text = "File Explorer", highlight = "Directory", padding = 1 },
-        { filetype = "sagaoutline", text = "Code Outline", highlight = "Directory", padding = 1 },
+        { filetype = "NvimTree",    text = "File Explorer", highlight = "Directory", padding = 1 },
+        { filetype = "sagaoutline", text = "Code Outline",  highlight = "Directory", padding = 1 },
       },
       indicator = {
         icon = "▎",

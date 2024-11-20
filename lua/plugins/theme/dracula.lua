@@ -25,18 +25,18 @@ require("dracula").setup {
     nontext = "#3B4048",
   },
   -- show the '~' characters after the end of buffers
-  show_end_of_buffer = false, -- default false
+  show_end_of_buffer = false,   -- default false
   -- use transparent background
-  transparent_bg = false, -- default false
+  transparent_bg = true,        -- default false
   -- set custom lualine background color
   lualine_bg_color = "#44475a", -- default nil
   -- set italic comment
-  italic_comment = true, -- default false
+  italic_comment = true,        -- default false
   -- overrides the default highlights see `:h synIDattr`
   overrides = {
     -- Examples
-    -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
-    -- NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
-    -- Nothing = {} -- clear highlight of Nothing
+    NonText = { fg = require("dracula").colors().white }, -- set NonText fg to white
+    NvimTreeIndentMarker = { link = "NonText" },          -- link to NonText highlight
+    Nothing = {}                                          -- clear highlight of Nothing
   },
 }

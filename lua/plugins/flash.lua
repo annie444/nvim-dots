@@ -4,11 +4,8 @@ return {
   opts = {
     labels = "asdfghjklqwertyuiopzxcvbnm",
     search = {
-      -- search/jump in all windows
       multi_window = true,
-      -- search direction
       forward = true,
-      -- when `false`, find only matches in the given direction
       wrap = true,
       -- Each mode will take ignorecase and smartcase into account.
       -- * exact: exact match

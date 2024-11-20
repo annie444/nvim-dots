@@ -1,4 +1,5 @@
 return {
+  { 'wakatime/vim-wakatime', lazy = false },
   {
     "mfussenegger/nvim-jdtls",
     ft = "java",
@@ -7,7 +8,7 @@ return {
     "nvim-lua/plenary.nvim",
     lazy = true,
   },
-  { "b0o/schemastore.nvim", lazy = true },
+  { "b0o/schemastore.nvim",  lazy = true },
   {
     "ahmedkhalf/project.nvim",
     event = "VeryLazy",

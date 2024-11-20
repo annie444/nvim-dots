@@ -2,9 +2,9 @@ return {
   "nvim-lualine/lualine.nvim",
   event = { "BufReadPost", "BufNewFile" },
   config = function()
-    local lualine = require "lualine"
-    local stl = require "plugins.lualine.components"
-    local theme = require "plugins.lualine.theme"
+    local lualine = require("lualine")
+    local stl = require("plugins.lualine.components")
+    local theme = require("plugins.lualine.theme")
 
     lualine.setup {
       options = {

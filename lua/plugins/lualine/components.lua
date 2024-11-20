@@ -119,7 +119,7 @@ M.lsp = {
     local clients = {}
 
     -- Iterate through all the clients for the current buffer
-    for _, client in pairs(vim.lsp.buf_get_clients()) do
+    for _, client in pairs(vim.lsp.get_clients()) do
       -- Skip the client if its name is "null-ls"
       if client.name ~= "null-ls" then
         -- Add the client name to the `clients` table

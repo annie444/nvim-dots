@@ -1,7 +1,7 @@
 local M = {}
 local keymap = vim.keymap.set
 
-local cmp_nvim_lsp = require "cmp_nvim_lsp"
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 M.capabilities = cmp_nvim_lsp.default_capabilities()
 
