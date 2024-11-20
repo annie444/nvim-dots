@@ -1,7 +1,7 @@
 if vim.g.vscode then
   require "core.options"
 else
-  local name = "nightly"
+  local name = "dracula"
 
   require "core"
   require "plugin-loader"
