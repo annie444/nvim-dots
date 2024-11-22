@@ -1,4 +1,4 @@
-require("dracula").setup {
+require("dracula").setup({
   -- customize dracula color palette
   colors = {
     bg = "#282A36",
@@ -39,4 +39,4 @@ require("dracula").setup {
     NvimTreeIndentMarker = { link = "NonText" },          -- link to NonText highlight
     Nothing = {}                                          -- clear highlight of Nothing
   },
-}
+})

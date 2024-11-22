@@ -140,8 +140,8 @@ autocmd("TermOpen", {
 
 autocmd("BufReadPost", {
   callback = function()
-    if fn.line "'\"" > 1 and fn.line "'\"" <= fn.line "$" then
-      vim.cmd 'normal! g`"'
+    if fn.line("'\"") > 1 and fn.line("'\"") <= fn.line("$") then
+      vim.cmd('normal! g`"')
     end
   end,
   group = general,
@@ -150,7 +150,7 @@ autocmd("BufReadPost", {
 
 autocmd("TextYankPost", {
   callback = function()
-    vim.hl.on_yank { higroup = "YankHighlight", timeout = 200 }
+    vim.hl.on_yank({ higroup = "YankHighlight", timeout = 200 })
   end,
   group = general,
   desc = "Highlight when yanking",
@@ -175,7 +175,7 @@ autocmd("FileType", {
 
 autocmd({ "FocusLost", "BufLeave", "BufWinLeave", "InsertLeave" }, {
   callback = function()
-    vim.cmd "silent! w"
+    vim.cmd("silent! w")
   end,
   group = general,
   desc = "Auto Save",
@@ -183,7 +183,7 @@ autocmd({ "FocusLost", "BufLeave", "BufWinLeave", "InsertLeave" }, {
 
 autocmd("FocusGained", {
   callback = function()
-    vim.cmd "checktime"
+    vim.cmd("checktime")
   end,
   group = general,
   desc = "Update file when there are changes",
@@ -191,7 +191,7 @@ autocmd("FocusGained", {
 
 autocmd("VimResized", {
   callback = function()
-    vim.cmd "wincmd ="
+    vim.cmd("wincmd =")
   end,
   group = general,
   desc = "Equalize Splits",

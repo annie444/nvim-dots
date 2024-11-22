@@ -99,16 +99,17 @@ return {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
     config = function()
-      require("notify").setup {
+      require("notify").setup({
         level = 2,
         minimum_width = 50,
         render = "default",
         stages = "fade",
         timeout = 2000,
         top_down = true,
-      }
+        background_colour = "#282A36",
+      })
 
-      vim.notify = require "notify"
+      vim.notify = require("notify")
     end,
   },
   {
