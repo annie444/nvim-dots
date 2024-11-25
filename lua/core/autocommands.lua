@@ -148,13 +148,13 @@ autocmd("BufReadPost", {
   desc = "Go To The Last Cursor Position",
 })
 
-autocmd("TextYankPost", {
-  callback = function()
-    vim.hl.on_yank({ higroup = "YankHighlight", timeout = 200 })
-  end,
-  group = general,
-  desc = "Highlight when yanking",
-})
+-- autocmd("TextYankPost", {
+--   callback = function()
+--     vim.hl.on_yank({ higroup = "YankHighlight", timeout = 200 })
+--   end,
+--   group = general,
+--   desc = "Highlight when yanking",
+-- })
 
 autocmd("BufEnter", {
   callback = function()
