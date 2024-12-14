@@ -144,6 +144,11 @@ local keymaps = {
       desc = "Save",
     },
 
+    ["<leader>lJ"] = {
+      cmd = function() require("jenkinsfile_linter").validate() end,
+      desc = "Lint Jenkinsfile",
+    },
+
     ["<leader>Pw"] = {
       cmd = "lua require('swenv').toggle()",
       desc = "Toggle SwEnv",
