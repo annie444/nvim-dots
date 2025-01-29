@@ -42,6 +42,7 @@ return {
       sync_install = false,
       auto_install = true,
       ignore_install = {},
+      modules = {},
       ensure_installed = {
         "c",
         "cpp",

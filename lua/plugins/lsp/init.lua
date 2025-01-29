@@ -51,32 +51,150 @@ return {
         require("lspconfig.ui.windows").default_options.border = "rounded"
 
         local language_servers = {
-          "jsonls",
-          "lua_ls",
+          -- arduino
+          "arduino_language_server",
+          -- assembly
+          "asm_lsp",
+          -- astro
+          "astro",
+          -- awk
+          "awk_ls",
+          -- bash
+          "bashls",
+          -- c/c++
           "clangd",
-          "intelephense",
-          "cssls",
-          "html",
-          "ts_ls",
-          "omnisharp",
-          "jdtls",
-          "yamlls",
-          "gopls",
-          "lemminx",
-          "vimls",
+          -- Cairo
+          "cairo_ls",
+          -- clojure
+          "clojure_lsp",
+          -- cmake
           "cmake",
-          "powershell_es",
-          "rust_analyzer",
-          "svelte",
+          -- CSS
+          "css_variables",
+          "cssls",
           "tailwindcss",
-          "terraformls",
+          "unocss",
+          -- Docker
+          "docker_compose_language_service",
+          "dockerls",
+          -- Jinja
+          "jinja_lsp",
+          -- Elixer
           "elixirls",
+          -- Emmet
+          "emmet_language_server",
+          -- Erlang
+          "elp",
+          -- Fortran
+          "fortls",
+          -- Go
+          "gopls",
+          "templ",
+          -- Gradle
+          "gradle_ls",
+          -- GraphQL
+          "graphql",
+          -- Handlebars
+          "glint",
+          -- Helm
+          "helm_ls",
+          -- HTML
+          "html",
+          -- HTMX
+          "htmx",
+          -- Java
+          "jdtls",
+          -- JS
+          "ts_ls",
+          -- jq
+          "jqls",
+          -- JSON
+          "jsonls",
+          -- Jsonnet
+          "jsonnet_ls",
+          -- Julia
+          "julials",
+          -- Kotlin
+          "kotlin_language_server",
+          -- LaTeX
+          "texlab",
+          -- Liquid
+          "shopify_theme_ls",
+          -- Lua
+          "lua_ls",
+          -- Markdown
+          "ltex",
+          "marksman",
+          -- Meason
+          "mesonlsp",
+          -- Nginx
+          "nginx_language_server",
+          -- Nim
+          "nim_langserver",
+          -- Nix
+          "rnix",
+          -- OCaml
+          "ocamllsp",
+          -- OpenAPI
+          "vacuum",
+          -- OpenGL
+          "glsl_analyzer",
+          -- OpenSCAD
+          "openscad_lsp",
+          -- Perl
+          "perlnavigator",
+          -- PHP
           "intelephense",
+          -- PowerShell
+          "powershell_es",
+          -- Prisma
+          "prismals",
+          -- Protobuf
+          "buf_ls",
+          -- Puppet
+          "puppet",
+          -- PureScript
+          "purescriptls",
+          -- reStructuredText
+          "ltex",
+          -- R
+          "r_language_server",
+          -- Ruby
+          "ruby_lsp",
+          -- Rust
+          "rust_analyzer",
+          -- Snyk
+          "snyk_ls",
+          -- SQL
+          "sqlls",
+          -- Svelte
+          "svelte",
+          -- Terraform
+          "terraformls",
+          "tflint",
+          -- TOML
+          "taplo",
+          -- VimScript
+          "vimls",
+          -- Vue
+          "vuels",
+          -- YAML
+          "yamlls",
+          -- Zig
+          "zls",
+          -- EFM
           "efm",
-          "pyright",
+          -- Typos
+          "typos_lsp",
+          -- Autotooling
+          "autotools_ls",
+          -- python
+          "ruff",
+          -- Static Type Analysis
+          "ast_grep",
         }
 
-        mason.setup {
+        mason.setup({
           ui = {
             -- Whether to automatically check for new versions when opening the :Mason window.
             check_outdated_packages_on_open = true,
@@ -87,11 +205,12 @@ return {
               package_uninstalled = " ",
             },
           },
-        }
+        })
 
-        mason_lspconfig.setup {
+        mason_lspconfig.setup({
           ensure_installed = language_servers,
-        }
+          automatic_installation = true,
+        })
 
         local disabled_servers = {
           "jdtls",
