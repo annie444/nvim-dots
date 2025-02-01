@@ -1,195 +1,147 @@
-local languages = require("efmls-configs.defaults").languages()
--- Filetype 	          Default Linter 	Default Formatter
--- CSS/SCSS/LESS/SASS 	stylelint     	prettier
--- JavaScript/JSX     	eslint 	        prettier
--- TypeScript/TSX     	eslint        	prettier
--- Go                 	golangci_lint
--- HTML 	                            	prettier
--- Lua                	luacheck      	stylua
--- Nix 	                              	alejandra
--- PHP                 	phpcs         	phpcbf
--- Python             	flake8        	autopep8
--- Ruby                	reek
--- VIM 	                vint
--- Blade 		                            blade_formatter
-
-languages = vim.tbl_extend("force", languages, {
-  -- Custom languages, or override existing ones
-  misc = {
-    require("efmls-configs.linters.alex"),
-    require("efmls-configs.linters.codespell"),
-    require("efmls-configs.linters.vale"),
-  },
-  bash = {
-    require("efmls-configs.linters.shellcheck"),
-    require("efmls-configs.formatters.shfmt"),
-    require("efmls-configs.formatters.beautysh"),
-  },
-  ["C#"] = {
-    require("efmls-configs.linters.mcs"),
-    require("efmls-configs.formatters.uncrustify"),
-  },
-  ["C++"] = {
-    require("efmls-configs.linters.clang_tidy"),
-    require("efmls-configs.linters.cpplint"),
-    require("efmls-configs.formatters.clang_tidy"),
-    require("efmls-configs.formatters.uncrustify"),
-    require("efmls-configs.formatters.clang_format"),
-  },
-  c = {
-    require("efmls-configs.linters.clang_tidy"),
-    require("efmls-configs.linters.cpplint"),
-    require("efmls-configs.formatters.clang_tidy"),
-    require("efmls-configs.formatters.uncrustify"),
-    require("efmls-configs.formatters.clang_format"),
-  },
-  cmake = {
-    require("efmls-configs.linters.cmake_lint"),
-    require("efmls-configs.formatters.gersemi"),
-  },
-  csh = {
-    require("efmls-configs.formatters.beautysh"),
-  },
+local languages = {
   css = {
-    require("efmls-configs.formatters.prettier_d"),
-    require("efmls-configs.linters.stylelint"),
-    require("efmls-configs.formatters.stylelint"),
+    require('efmls-configs.linters.stylelint'),
+    require('efmls-configs.formatters.prettier'),
   },
   scss = {
-    require("efmls-configs.formatters.prettier_d"),
-    require("efmls-configs.linters.stylelint"),
-    require("efmls-configs.formatters.stylelint"),
+    require('efmls-configs.linters.stylelint'),
+    require('efmls-configs.formatters.prettier'),
   },
   less = {
-    require("efmls-configs.formatters.prettier_d"),
-    require("efmls-configs.linters.stylelint"),
-    require("efmls-configs.formatters.stylelint"),
+    require('efmls-configs.linters.stylelint'),
+    require('efmls-configs.formatters.prettier'),
   },
   sass = {
-    require("efmls-configs.formatters.prettier_d"),
-    require("efmls-configs.linters.stylelint"),
-    require("efmls-configs.formatters.stylelint"),
-  },
-  html = {
-    require("efmls-configs.linters.djlint"),
-    require("efmls-configs.formatters.prettier_d"),
+    require('efmls-configs.linters.stylelint'),
+    require('efmls-configs.formatters.prettier'),
   },
   javascript = {
-    require("efmls-configs.linters.eslint_d"),
-    require("efmls-configs.formatters.prettier_d"),
-    require("efmls-configs.formatters.eslint_d"),
-    require("efmls-configs.formatters.prettier_eslint"),
+    require('efmls-configs.linters.eslint'),
+    require('efmls-configs.formatters.prettier'),
   },
   javascriptreact = {
-    require("efmls-configs.linters.eslint_d"),
-    require("efmls-configs.formatters.prettier_d"),
-    require("efmls-configs.formatters.eslint_d"),
-    require("efmls-configs.formatters.prettier_eslint"),
+    require('efmls-configs.linters.eslint'),
+    require('efmls-configs.formatters.prettier'),
   },
   typescript = {
-    require("efmls-configs.linters.eslint_d"),
-    require("efmls-configs.formatters.prettier_d"),
-    require("efmls-configs.formatters.eslint_d"),
-    require("efmls-configs.formatters.prettier_eslint"),
+    require('efmls-configs.linters.eslint'),
+    require('efmls-configs.formatters.prettier'),
   },
   typescriptreact = {
-    require("efmls-configs.linters.eslint_d"),
-    require("efmls-configs.formatters.prettier_d"),
-    require("efmls-configs.formatters.eslint_d"),
-    require("efmls-configs.formatters.prettier_eslint"),
-  },
-  graphql = {
-    require("efmls-configs.formatters.prettier_d"),
-  },
-  json = {
-    require("efmls-configs.linters.jq"),
-    require("efmls-configs.formatters.prettier_d"),
-  },
-  markdown = {
-    require("efmls-configs.linters.markdownlint"),
-    require("efmls-configs.formatters.mdformat"),
-    require("efmls-configs.formatters.cbfmt"),
-  },
-  svelte = {
-    require("efmls-configs.linters.eslint_d"),
-    require("efmls-configs.formatters.prettier_d"),
-    require("efmls-configs.formatters.eslint_d"),
-    require("efmls-configs.formatters.prettier_eslint"),
-  },
-  yaml = {
-    require("efmls-configs.linters.actionlint"),
-    require("efmls-configs.linters.yamllint"),
-    require("efmls-configs.formatters.prettier"),
-  },
-  docker = {
-    require("efmls-configs.linters.hadolint"),
-  },
-  fish = {
-    require("efmls-configs.linters.fish"),
-    require("efmls-configs.formatters.fish_indent"),
-  },
-  gitcommit = {
-    require("efmls-configs.linters.gitlint"),
+    require('efmls-configs.linters.eslint'),
+    require('efmls-configs.formatters.prettier'),
   },
   go = {
-    require("efmls-configs.linters.golangci_lint"),
-    require("efmls-configs.formatters.gofmt"),
+    require('efmls-configs.linters.golangci_lint'),
+    require('efmls-configs.linters.golint'),
+    require('efmls-configs.formatters.gofmt'),
   },
-  java = {
-    require("efmls-configs.formatters.google_java_format"),
-    require("efmls-configs.linters.uncrustify"),
+  html = {
+    require('efmls-configs.linters.markuplint'),
+    require('efmls-configs.formatters.prettier'),
   },
-  ksh = {
-    require("efmls-configs.formatters.beautysh"),
-  },
-  make = {
-    require("efmls-configs.linters.checkmake"),
+  lua = {
+    require('efmls-configs.linters.luacheck'),
+    require('efmls-configs.formatters.stylua'),
   },
   nix = {
-    require("efmls-configs.linters.statix"),
-    require("efmls-configs.formatters.alejandra"),
+    require('efmls-configs.formatters.alejandra'),
   },
-  ["objective-c++"] = {
-    require("efmls-configs.formatters.uncrustify"),
+  php = {
+    require('efmls-configs.linters.phpcs'),
+    require('efmls-configs.formatters.phpcbf'),
   },
-  ["objective-c"] = {
-    require("efmls-configs.formatters.uncrustify"),
-  },
-  pawn = {
-    require("efmls-configs.formatters.uncrustify"),
-  },
-  proto = {
-    require("efmls-configs.formatters.protolint"),
+  markdownlint = {
+    require('efmls-configs.linters.markdownlint'),
+    require('efmls-configs.formatters.mdformat'),
   },
   python = {
-    require("efmls-configs.linters.djlint"),
-    require("efmls-configs.linters.vulture"),
-    require("efmls-configs.formatters.isort"),
-    require("efmls-configs.formatters.ruff"),
+    require('efmls-configs.linters.ruff'),
+    require('efmls-configs.formatters.black'),
+    require('efmls-configs.formatters.ruff'),
+    require('efmls-configs.formatters.ruff_sort'),
   },
-  rust = {
-    require("efmls-configs.formatters.rustfmt"),
+  ruby = {
+    require('efmls-configs.linters.reek'),
+  },
+  vim = {
+    require('efmls-configs.linters.vint'),
+  },
+  blade = {
+    require('efmls-configs.formatters.blade_formatter'),
+  },
+  proto = {
+    require('efmls-configs.linters.buf'),
+    require('efmls-configs.formatters.buf'),
+  },
+  misc = {
+    require('efmls-configs.linters.codespell'),
+    require('efmls-configs.linters.languagetool'),
+  },
+  json = {
+    require('efmls-configs.linters.jq'),
+    require('efmls-configs.formatters.jq'),
+    require('efmls-configs.formatters.prettier'),
+  },
+  bash = {
+    require('efmls-configs.linters.shellcheck'),
+    require('efmls-configs.formatters.beautysh'),
+  },
+  csh = {
+    require('efmls-configs.linters.shellcheck'),
+    require('efmls-configs.formatters.beautysh'),
   },
   sh = {
-    require("efmls-configs.linters.shellcheck"),
-    require("efmls-configs.formatters.beautysh"),
-    require("efmls-configs.formatters.shfmt"),
-  },
-  terraform = {
-    require("efmls-configs.formatters.terraform_fmt"),
-  },
-  toml = {
-    require("efmls-configs.formatters.dprint"),
+    require('efmls-configs.linters.shellcheck'),
+    require('efmls-configs.formatters.beautysh'),
   },
   zsh = {
-    require("efmls-configs.formatters.beautysh"),
+    require('efmls-configs.linters.shellcheck'),
+    require('efmls-configs.formatters.beautysh'),
   },
-})
+  c = {
+    require('efmls-configs.linters.gcc'),
+    require('efmls-configs.formatters.clang_format'),
+    require('efmls-configs.formatters.clang_tidy'),
+  },
+  ['c++'] = {
+    require('efmls-configs.linters.gcc'),
+    require('efmls-configs.formatters.clang_format'),
+    require('efmls-configs.formatters.clang_tidy'),
+  },
+  fish = {
+    require('efmls-configs.linters.fish'),
+    require('efmls-configs.formatters.fish_indent'),
+  },
+  gitcommit = {
+    require('efmls-configs.linters.gitlint'),
+  },
+  rust = {
+    require('efmls-configs.formatters.rustfmt'),
+  },
+  sql = {
+    require('efmls-configs.linters.sqlfluff'),
+    require('efmls-configs.formatters.sql-formatter'),
+  },
+  terraform = {
+    require('efmls-configs.formatters.terraform_fmt'),
+  },
+  yaml = {
+    require('efmls-configs.formatters.yq'),
+  },
+  tex = {
+    require('efmls-configs.linters.chktex'),
+    require('efmls-configs.formatters.latexindent'),
+  },
+  toml = {
+    require('efmls-configs.linters.taplo'),
+  },
+}
 
-local efmls_config = {
+return {
   filetypes = vim.tbl_keys(languages),
   settings = {
-    rootMarkers = { ".git/" },
+    rootMarkers = { '.git/' },
     languages = languages,
   },
   init_options = {
@@ -197,5 +149,3 @@ local efmls_config = {
     documentRangeFormatting = true,
   },
 }
-
-return efmls_config

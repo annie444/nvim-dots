@@ -207,6 +207,9 @@ return {
           },
         })
 
+
+
+
         mason_lspconfig.setup({
           ensure_installed = language_servers,
           automatic_installation = true,
