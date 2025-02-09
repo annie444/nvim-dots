@@ -127,8 +127,6 @@ return {
           "marksman",
           -- Meason
           "mesonlsp",
-          -- Nginx
-          "nginx_language_server",
           -- Nim
           "nim_langserver",
           -- Nix
@@ -157,8 +155,6 @@ return {
           "purescriptls",
           -- reStructuredText
           "ltex",
-          -- R
-          "r_language_server",
           -- Ruby
           "ruby_lsp",
           -- Rust
