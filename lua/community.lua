@@ -5,8 +5,7 @@
 ---@type LazySpec
 return {
 	"AstroNvim/astrocommunity",
-	{ import = "astrocommunity.pack.lua" },
-	-- import/override with your plugins folder
+
 	-- bars and lines
 	{ import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
 	{ import = "astrocommunity.bars-and-lines.vim-illuminate" },
@@ -189,8 +188,6 @@ return {
 
 	-- Terminal support
 	{ import = "astrocommunity.terminal-integration.toggleterm-manager-nvim" },
-	{ import = "astrocommunity.terminal-integration.vim-tmux-yank" },
-	{ import = "astrocommunity.terminal-integration.vim-tpipeline" },
 	{ import = "astrocommunity.terminal-integration.nvim-unception" },
 
 	-- Utilities
