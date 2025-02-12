@@ -20,6 +20,7 @@ return {
       -- control auto formatting on save
       format_on_save = {
         enabled = true,
+        ---@diagnostic disable: unused-vararg
         filter = function(bufnr)
           -- any lua logic...
           return true -- return boolean whether or not to format
