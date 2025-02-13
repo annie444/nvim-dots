@@ -13,6 +13,6 @@ return {
 		opts.features.inlay_hints = false -- enable/disable inlay hints on start
 		opts.features.semantic_tokens = true -- enable/disable semantic token highlighting
 		opts.features.signature_help = true -- enable/disable signature help on start
-		opts.formatting.format_on_save = true -- enable/disable autoformatting on save
+		opts.formatting.format_on_save.enabled = true -- enable/disable autoformatting on save
 	end,
 }
