@@ -20,8 +20,25 @@ return {
 		-- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
 		diagnostics = {
 			virtual_text = true,
-			underline = true,
+			underline = false,
+			signs = true,
+			float = true,
+			update_in_insert = false,
+			severity_sort = true,
 		},
+		sessions = {
+    -- Configure auto saving
+    autosave = {
+      	last = true, -- auto save last session
+      	cwd = true, -- auto save session for each working directory
+    	},
+    	-- Patterns to ignore when saving sessions
+    	ignore = {
+      	dirs = {}, -- working directories to ignore sessions in
+      	filetypes = { "gitcommit", "gitrebase" }, -- filetypes to ignore sessions
+      	buftypes = {}, -- buffer types to ignore sessions
+    	},
+  	},
 		-- vim options can be configured here
 		options = {
 			opt = { -- vim.opt.<key>
@@ -30,6 +47,7 @@ return {
 				spell = false, -- sets vim.opt.spell
 				signcolumn = "yes", -- sets vim.opt.signcolumn to yes
 				wrap = true, -- sets vim.opt.wrap
+				guifont = "JetBrainsMono Nerd Font Mono:h12", -- sets vim.opt.guifont
 			},
 		},
 	},
