@@ -44,7 +44,6 @@ return {
 	{ import = "astrocommunity.debugging.telescope-dap-nvim" },
 
 	-- diagnostics
-	{ import = "astrocommunity.diagnostics.lsp_lines-nvim" },
 	{ import = "astrocommunity.diagnostics.trouble-nvim" },
 
 	-- editing support
