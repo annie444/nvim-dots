@@ -15,7 +15,6 @@ return {
 
 	-- color
 	{ import = "astrocommunity.color.nvim-highlight-colors" },
-	{ import = "astrocommunity.color.transparent-nvim" },
 	{ import = "astrocommunity.color.vim-highlighter" },
 
 	-- color scheme
@@ -27,13 +26,11 @@ return {
 	-- completion
 	{ import = "astrocommunity.completion.cmp-calc" },
 	{ import = "astrocommunity.completion.cmp-cmdline" },
-	{ import = "astrocommunity.completion.cmp-emoji" },
 	{ import = "astrocommunity.completion.cmp-git" },
 	{ import = "astrocommunity.completion.cmp-latex-symbols" },
 	{ import = "astrocommunity.completion.cmp-nerdfont" },
 	{ import = "astrocommunity.completion.cmp-nvim-lua" },
 	{ import = "astrocommunity.completion.cmp-spell" },
-	{ import = "astrocommunity.completion.cmp-tmux" },
 	{ import = "astrocommunity.completion.cmp-under-comparator" },
 	{ import = "astrocommunity.completion.copilot-lua-cmp" },
 	{ import = "astrocommunity.completion.nvim-cmp-buffer-lines" },
@@ -48,12 +45,10 @@ return {
 
 	-- editing support
 	{ import = "astrocommunity.editing-support.auto-save-nvim" },
-	{ import = "astrocommunity.editing-support.bigfile-nvim" },
 	{ import = "astrocommunity.editing-support.cutlass-nvim" },
 	{ import = "astrocommunity.editing-support.hypersonic-nvim" },
 	{ import = "astrocommunity.editing-support.mini-splitjoin" },
 	{ import = "astrocommunity.editing-support.neogen" },
-	{ import = "astrocommunity.editing-support.multiple-cursors-nvim" },
 	{ import = "astrocommunity.editing-support.nvim-devdocs" },
 	{ import = "astrocommunity.editing-support.nvim-treesitter-context" },
 	{ import = "astrocommunity.editing-support.refactoring-nvim" },
@@ -78,7 +73,6 @@ return {
 
 	-- indent
 	{ import = "astrocommunity.indent.indent-blankline-nvim" },
-	{ import = "astrocommunity.indent.mini-indentscope" },
 	{ import = "astrocommunity.indent.indent-tools-nvim" },
 
 	-- keybindings
@@ -96,7 +90,6 @@ return {
 	-- Markdown + Latex
 	{ import = "astrocommunity.markdown-and-latex.glow-nvim" },
 	{ import = "astrocommunity.markdown-and-latex.markview-nvim" },
-	{ import = "astrocommunity.markdown-and-latex.vimtex" },
 
 	-- media
 	{ import = "astrocommunity.media.img-clip-nvim" },
@@ -161,7 +154,6 @@ return {
 	{ import = "astrocommunity.programming-language-support.nvim-jqx" },
 
 	-- Astro Recipes
-	{ import = "astrocommunity.recipes.cache-colorscheme" },
 	{ import = "astrocommunity.recipes.heirline-clock-statusline" },
 	{ import = "astrocommunity.recipes.heirline-mode-text-statusline" },
 	{ import = "astrocommunity.recipes.neovide" },
@@ -179,7 +171,6 @@ return {
 
 	-- Splits and Windows
 	{ import = "astrocommunity.split-and-window.neominimap-nvim" },
-	{ import = "astrocommunity.split-and-window.edgy-nvim" },
 	{ import = "astrocommunity.split-and-window.windows-nvim" },
 
 	-- Syntax editing
