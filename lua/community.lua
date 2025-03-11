@@ -38,7 +38,6 @@ return {
 	-- debugging
 	{ import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
 	{ import = "astrocommunity.debugging.nvim-dap-virtual-text" },
-	{ import = "astrocommunity.debugging.telescope-dap-nvim" },
 
 	-- diagnostics
 	{ import = "astrocommunity.diagnostics.trouble-nvim" },
@@ -58,9 +57,6 @@ return {
 	{ import = "astrocommunity.editing-support.vim-doge" },
 	{ import = "astrocommunity.editing-support.wildfire-nvim" },
 	{ import = "astrocommunity.editing-support.vim-visual-multi" },
-
-	-- file explorer
-	{ import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
 
 	-- fuzzy finder
 	{ import = "astrocommunity.fuzzy-finder.fzf-lua" },
@@ -158,7 +154,6 @@ return {
 	{ import = "astrocommunity.recipes.heirline-clock-statusline" },
 	{ import = "astrocommunity.recipes.heirline-mode-text-statusline" },
 	{ import = "astrocommunity.recipes.neovide" },
-	{ import = "astrocommunity.recipes.telescope-lsp-mappings" },
 
 	-- Remote Dev
 	{ import = "astrocommunity.remote-development.remote-sshfs-nvim" },
@@ -185,8 +180,6 @@ return {
 	{ import = "astrocommunity.utility.hover-nvim" },
 	{ import = "astrocommunity.utility.mason-tool-installer-nvim" },
 	{ import = "astrocommunity.utility.noice-nvim" },
-	{ import = "astrocommunity.utility.telescope-lazy-nvim" },
-	{ import = "astrocommunity.utility.telescope-live-grep-args-nvim" },
 	{ import = "astrocommunity.utility.vim-fetch" },
 
 	-- Testing
