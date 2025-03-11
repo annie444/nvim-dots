@@ -80,12 +80,13 @@ return {
 
 	-- lsp
 	{ import = "astrocommunity.lsp.actions-preview-nvim" },
-	{ import = "astrocommunity.lsp.garbage-day-nvim" },
-	{ import = "astrocommunity.lsp.inc-rename-nvim" },
 	{ import = "astrocommunity.lsp.lsp-lens-nvim" },
 	{ import = "astrocommunity.lsp.lsp-signature-nvim" },
 	{ import = "astrocommunity.lsp.lspsaga-nvim" },
 	{ import = "astrocommunity.lsp.nvim-lsp-file-operations" },
+	-- lsp round 2
+	{ import = "astrocommunity.lsp.delimited-nvim" },
+	{ import = "astrocommunity.lsp.lsplinks-nvim" },
 
 	-- Markdown + Latex
 	{ import = "astrocommunity.markdown-and-latex.glow-nvim" },
