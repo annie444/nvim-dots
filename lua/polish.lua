@@ -11,32 +11,3 @@ vim.filetype.add({
 		["~/%.config/chezmoi/.*"] = "chezmoi",
 	},
 })
-
-require("lspconfig").rust_analyzer.setup({
-	-- Other Configs ...
-	settings = {
-		["rust-analyzer"] = {
-			-- Other Settings ...
-			imports = {
-				granularity = {
-					group = "module",
-				},
-				prefix = "self",
-			},
-			cargo = {
-				buildScripts = {
-					enable = true,
-				},
-			},
-			procMacro = {
-				enable = true,
-				ignored = {
-					leptos_macro = {
-						"component",
-						"server",
-					},
-				},
-			},
-		},
-	},
-})
