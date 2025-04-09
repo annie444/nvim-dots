@@ -105,6 +105,11 @@ return {
 			["<Tab>"] = {
 				"select_next",
 				"snippet_forward",
+				function()
+					if vim.g.ai_accept then
+						return vim.g.ai_accept()
+					end
+				end,
 				function(cmp)
 					if has_words_before() or vim.api.nvim_get_mode().mode == "c" then
 						return cmp.show()

@@ -6,7 +6,12 @@ return {
 	opts = function(_, opts)
 		opts.enable_chat = true
 		opts.enable_cmp_source = require("astrocore").is_available("nvim-cmp")
-		opts.virtual_text.key_bindings.accept = false
+		opts.virtual_text = {
+			key_bindings = {
+				accept = false,
+			},
+		}
+		
 	end,
 	dependencies = {
 		{

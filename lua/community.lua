@@ -107,7 +107,6 @@ return {
 	{ import = "astrocommunity.neovim-lua-development.helpview-nvim" },
 
 	-- Notes
-	{ import = "astrocommunity.note-taking.neorg" },
 	{ import = "astrocommunity.note-taking.venn-nvim" },
 
 	-- Packs
