@@ -23,7 +23,7 @@ local function get_kind_icon(CTX)
 					end
 				elseif ctx.item.source_name == "Path" then
 					ctx.kind_icon, ctx.kind_hl =
-						mini_icons.get(ctx.kind == "Folder" and "directory" or "file", ctx.label)
+							mini_icons.get(ctx.kind == "Folder" and "directory" or "file", ctx.label)
 				end
 			end
 		end
@@ -57,7 +57,7 @@ local function get_kind_icon(CTX)
 					local doc = vim.tbl_get(ctx, "item", "documentation")
 					if doc then
 						local color_item = highlight_colors_avail
-							and highlight_colors.format(doc, { kind = kinds[kinds.Color] })
+								and highlight_colors.format(doc, { kind = kinds[kinds.Color] })
 						if color_item and color_item.abbr_hl_group then
 							if color_item.abbr then
 								ctx.kind_icon = color_item.abbr
@@ -86,7 +86,9 @@ return {
 	build = "cargo build --release",
 	opts_extend = { "sources.default", "cmdline.sources", "term.sources" },
 	opts = {
-		enabled = true,
+		enabled = function()
+			return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)
+		end,
 		-- remember to enable your providers here
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
