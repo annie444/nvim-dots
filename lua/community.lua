@@ -33,6 +33,7 @@ return {
 	{ import = "astrocommunity.completion.cmp-spell" },
 	{ import = "astrocommunity.completion.cmp-under-comparator" },
 	{ import = "astrocommunity.completion.codeium-nvim" },
+	{ import = "astrocommunity.completion.blink-cmp" },
 	{ import = "astrocommunity.completion.nvim-cmp-buffer-lines" },
 
 	-- debugging
@@ -154,6 +155,7 @@ return {
 	{ import = "astrocommunity.recipes.heirline-clock-statusline" },
 	{ import = "astrocommunity.recipes.heirline-mode-text-statusline" },
 	{ import = "astrocommunity.recipes.neovide" },
+	{ import = "astrocommunity.recipes.ai" },
 
 	-- Remote Dev
 	{ import = "astrocommunity.remote-development.remote-sshfs-nvim" },
