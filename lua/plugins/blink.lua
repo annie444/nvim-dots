@@ -86,6 +86,7 @@ return {
 	build = "cargo build --release",
 	opts_extend = { "sources.default", "cmdline.sources", "term.sources" },
 	opts = {
+		enabled = true,
 		-- remember to enable your providers here
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
@@ -129,7 +130,12 @@ return {
 			},
 		},
 		completion = {
-			list = { selection = { preselect = false, auto_insert = true } },
+			list = {
+				selection = {
+					preselect = false,
+					auto_insert = true,
+				},
+			},
 			menu = {
 				auto_show = function(ctx)
 					return ctx.mode ~= "cmdline"
@@ -151,7 +157,12 @@ return {
 				},
 			},
 			accept = {
-				auto_brackets = { enabled = true },
+				auto_brackets = {
+					enabled = true,
+				},
+			},
+			ghost_text = {
+				enabled = true,
 			},
 			documentation = {
 				auto_show = true,
@@ -163,10 +174,14 @@ return {
 			},
 		},
 		signature = {
+			enabled = true,
 			window = {
 				border = "rounded",
 				winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
 			},
+		},
+		cmdline = {
+			enabled = true,
 		},
 	},
 	specs = {

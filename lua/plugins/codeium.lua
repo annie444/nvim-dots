@@ -11,7 +11,6 @@ return {
 				accept = false,
 			},
 		}
-		
 	end,
 	dependencies = {
 		{

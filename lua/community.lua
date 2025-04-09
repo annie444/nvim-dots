@@ -25,16 +25,12 @@ return {
 
 	-- completion
 	{ import = "astrocommunity.completion.cmp-calc" },
-	{ import = "astrocommunity.completion.cmp-cmdline" },
-	{ import = "astrocommunity.completion.cmp-git" },
 	{ import = "astrocommunity.completion.cmp-latex-symbols" },
 	{ import = "astrocommunity.completion.cmp-nerdfont" },
 	{ import = "astrocommunity.completion.cmp-nvim-lua" },
 	{ import = "astrocommunity.completion.cmp-spell" },
-	{ import = "astrocommunity.completion.cmp-under-comparator" },
 	{ import = "astrocommunity.completion.codeium-nvim" },
 	{ import = "astrocommunity.completion.blink-cmp" },
-	{ import = "astrocommunity.completion.nvim-cmp-buffer-lines" },
 
 	-- debugging
 	{ import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
