@@ -32,7 +32,7 @@ return {
 	{ import = "astrocommunity.completion.cmp-nvim-lua" },
 	{ import = "astrocommunity.completion.cmp-spell" },
 	{ import = "astrocommunity.completion.cmp-under-comparator" },
-	{ import = "astrocommunity.completion.copilot-lua-cmp" },
+	{ import = "astrocommunity.completion.codeium-nvim" },
 	{ import = "astrocommunity.completion.nvim-cmp-buffer-lines" },
 
 	-- debugging
