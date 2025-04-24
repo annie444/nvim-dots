@@ -23,7 +23,7 @@ local function get_kind_icon(CTX)
 					end
 				elseif ctx.item.source_name == "Path" then
 					ctx.kind_icon, ctx.kind_hl =
-							mini_icons.get(ctx.kind == "Folder" and "directory" or "file", ctx.label)
+						mini_icons.get(ctx.kind == "Folder" and "directory" or "file", ctx.label)
 				end
 			end
 		end
@@ -57,7 +57,7 @@ local function get_kind_icon(CTX)
 					local doc = vim.tbl_get(ctx, "item", "documentation")
 					if doc then
 						local color_item = highlight_colors_avail
-								and highlight_colors.format(doc, { kind = kinds[kinds.Color] })
+							and highlight_colors.format(doc, { kind = kinds[kinds.Color] })
 						if color_item and color_item.abbr_hl_group then
 							if color_item.abbr then
 								ctx.kind_icon = color_item.abbr
@@ -82,9 +82,10 @@ end
 return {
 	"Saghen/blink.cmp",
 	event = { "InsertEnter", "CmdlineEnter" },
-	version = "^1",
+	version = "1.*",
 	build = "cargo build --release",
 	opts_extend = { "sources.default", "cmdline.sources", "term.sources" },
+	---@type blink.cmp.Config
 	opts = {
 		enabled = function()
 			return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)
@@ -93,6 +94,12 @@ return {
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
+		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+		--
+		-- See the fuzzy documentation for more information
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 		keymap = {
 			["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
 			["<Up>"] = { "select_prev", "fallback" },
