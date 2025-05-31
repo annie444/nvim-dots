@@ -9,10 +9,10 @@ return {
 	---@param opts AstroLSPOpts
 	opts = function(_, opts)
 		-- Configuration table of features provided by AstroLSP
-		opts.features.codelens = true -- enable/disable codelens refresh on start
-		opts.features.inlay_hints = true -- enable/disable inlay hints on start
-		opts.features.semantic_tokens = true -- enable/disable semantic token highlighting
-		opts.features.signature_help = true -- enable/disable signature help on start
+		opts.features.codelens = true               -- enable/disable codelens refresh on start
+		opts.features.inlay_hints = true            -- enable/disable inlay hints on start
+		opts.features.semantic_tokens = true        -- enable/disable semantic token highlighting
+		opts.features.signature_help = true         -- enable/disable signature help on start
 		opts.formatting.format_on_save.enabled = true -- enable/disable autoformatting on save
 		opts.config.rust_analyzer.settings = {
 			["rust-analyzer"] = {
