@@ -29,7 +29,6 @@ return {
 	{ import = "astrocommunity.completion.cmp-nerdfont" },
 	{ import = "astrocommunity.completion.cmp-nvim-lua" },
 	{ import = "astrocommunity.completion.cmp-spell" },
-	{ import = "astrocommunity.completion.codeium-nvim" },
 	{ import = "astrocommunity.completion.blink-cmp" },
 
 	-- debugging
