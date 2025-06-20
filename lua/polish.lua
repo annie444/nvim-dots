@@ -7,7 +7,5 @@ vim.filetype.add({
 	extension = {
 		bats = "bash",
 	},
-	pattern = {
-		["~/%.config/chezmoi/.*"] = "chezmoi",
-	},
+	pattern = {},
 })

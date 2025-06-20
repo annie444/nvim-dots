@@ -108,7 +108,6 @@ return {
 	{ import = "astrocommunity.pack.ansible" },
 	{ import = "astrocommunity.pack.astro" },
 	{ import = "astrocommunity.pack.bash" },
-	{ import = "astrocommunity.pack.chezmoi" },
 	{ import = "astrocommunity.pack.cmake" },
 	{ import = "astrocommunity.pack.docker" },
 	{ import = "astrocommunity.pack.fish" },
