@@ -18,10 +18,10 @@ return {
 		-- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
 		diagnostics = {
 			virtual_text = true,
-			underline = false,
+			underline = true,
 			signs = true,
 			float = true,
-			update_in_insert = false,
+			update_in_insert = true,
 			severity_sort = true,
 		},
 		-- Configuration of vim mappings to create
