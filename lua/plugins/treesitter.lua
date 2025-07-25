@@ -23,7 +23,6 @@ return {
       "gpg",
       "http",
       "mermaid",
-      "org",
     },
   },
 }

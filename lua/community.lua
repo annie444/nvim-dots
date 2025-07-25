@@ -89,11 +89,9 @@ return {
   { import = "astrocommunity.markdown-and-latex.markview-nvim" },
 
   -- media
-  { import = "astrocommunity.media.img-clip-nvim" },
   { import = "astrocommunity.media.vim-wakatime" },
 
   -- move / motions
-  { import = "astrocommunity.motion.mini-ai" },
   { import = "astrocommunity.motion.mini-basics" },
   { import = "astrocommunity.motion.mini-bracketed" },
   { import = "astrocommunity.motion.mini-move" },
@@ -202,9 +200,6 @@ return {
   -- Testing
   { import = "astrocommunity.test.nvim-coverage" },
   { import = "astrocommunity.test.neotest" },
-
-  -- Registers
-  { import = "astrocommunity.register.nvim-neoclip-lua" },
 
   -- Snippets
   { import = "astrocommunity.snippet.nvim-snippets" },
