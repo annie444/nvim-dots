@@ -205,7 +205,6 @@ return {
 
   -- Registers
   { import = "astrocommunity.register.nvim-neoclip-lua" },
-  { import = "astrocommunity.register.vim-obsession" },
 
   -- Snippets
   { import = "astrocommunity.snippet.nvim-snippets" },
