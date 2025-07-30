@@ -21,6 +21,7 @@ return {
       },
       timeout_ms = 10000, -- set timeout for formatting requests in milliseconds
     },
+    defaults = { hover = { border = "rounded", silent = true } },
     autocmds = {
       -- first key is the `augroup` to add the auto commands to (:h augroup)
       lsp_codelens_refresh = {
