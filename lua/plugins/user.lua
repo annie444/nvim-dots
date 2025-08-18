@@ -5,8 +5,6 @@
 return {
   -- == Examples of Adding Plugins ==
 
-  "andweeb/presence.nvim",
-
   -- == Examples of Overriding Plugins ==
 
   -- customize dashboard options
@@ -40,6 +38,7 @@ return {
   --     luasnip.filetype_extend("javascript", { "javascriptreact" })
   --   end,
   -- },
+  { "Glench/Vim-Jinja2-Syntax" },
 
   {
     "windwp/nvim-autopairs",
