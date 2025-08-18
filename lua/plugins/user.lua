@@ -38,7 +38,7 @@ return {
   --     luasnip.filetype_extend("javascript", { "javascriptreact" })
   --   end,
   -- },
-  { "Glench/Vim-Jinja2-Syntax" },
+  { "Glench/Vim-Jinja2-Syntax", lazy = false },
 
   {
     "windwp/nvim-autopairs",
