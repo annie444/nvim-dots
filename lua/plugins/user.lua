@@ -54,4 +54,16 @@ return {
       )
     end,
   },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    dependencies = {
+      { "DrKJeff16/wezterm-types", lazy = true },
+    },
+    opts = function(_, opts)
+      vim.list_extend(opts.library, {
+        { path = "wezterm-types", mods = { "wezterm" } },
+      })
+    end,
+  },
 }

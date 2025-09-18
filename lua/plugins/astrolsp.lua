@@ -60,35 +60,5 @@ return {
         },
       },
     },
-    config = {
-      rust_analyzer = {
-        settings = {
-          ["rust-analyzer"] = {
-            imports = {
-              granularity = {
-                group = "module",
-              },
-              prefix = "self",
-            },
-            cargo = {
-              buildScripts = {
-                enable = true,
-              },
-              extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
-              extraArgs = { "--profile", "rust-analyzer" },
-            },
-            procMacro = {
-              enable = true,
-              ignored = {
-                leptos_macro = {
-                  "component",
-                  "server",
-                },
-              },
-            },
-          },
-        },
-      },
-    },
   },
 }

@@ -1,5 +1,7 @@
 -- Customize None-ls sources
 
+local null_ls = require "null-ls"
+
 ---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
@@ -13,7 +15,7 @@ return {
     -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
     opts.sources = require("astrocore").list_insert_unique(opts.sources, {
       -- Set a formatter
-      require("null-ls").builtins.formatting.stylua,
+      null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
     })
   end,
