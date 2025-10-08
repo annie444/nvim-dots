@@ -6,14 +6,6 @@
 return {
   "AstroNvim/astrocommunity",
 
-  -- bars and lines
-  { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
-  { import = "astrocommunity.bars-and-lines.vim-illuminate" },
-
-  -- code runner
-  { import = "astrocommunity.code-runner.overseer-nvim" },
-  { import = "astrocommunity.code-runner.compiler-nvim" },
-
   -- color
   { import = "astrocommunity.color.nvim-highlight-colors" },
   { import = "astrocommunity.color.vim-highlighter" },
@@ -25,8 +17,8 @@ return {
   { import = "astrocommunity.comment.mini-comment" },
 
   -- completion
-  { import = "astrocommunity.completion.cmp-calc" },
-  { import = "astrocommunity.completion.cmp-latex-symbols" },
+  { import = "astrocommunity.completion.blink-cmp-emoji" },
+  { import = "astrocommunity.completion.blink-cmp-git" },
   { import = "astrocommunity.completion.cmp-nerdfont" },
   { import = "astrocommunity.completion.cmp-nvim-lua" },
   { import = "astrocommunity.completion.cmp-spell" },
@@ -36,9 +28,6 @@ return {
   -- debugging
   { import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
-
-  -- diagnostics
-  { import = "astrocommunity.diagnostics.trouble-nvim" },
 
   -- editing support
   { import = "astrocommunity.editing-support.auto-save-nvim" },
@@ -57,11 +46,10 @@ return {
   { import = "astrocommunity.editing-support.vim-visual-multi" },
 
   -- fuzzy finder
-  { import = "astrocommunity.fuzzy-finder.fzf-lua" },
   { import = "astrocommunity.fuzzy-finder.snacks-picker" },
 
   -- git plugins
-  { import = "astrocommunity.git.git-blame-nvim" },
+  { import = "astrocommunity.git.blame-nvim" },
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.git.gitgraph-nvim" },
 
@@ -75,9 +63,6 @@ return {
   -- lsp
   { import = "astrocommunity.lsp.dev-tools-nvim" },
   { import = "astrocommunity.lsp.actions-preview-nvim" },
-  { import = "astrocommunity.lsp.lsp-lens-nvim" },
-  { import = "astrocommunity.lsp.lsp-signature-nvim" },
-  { import = "astrocommunity.lsp.lspsaga-nvim" },
   { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
   { import = "astrocommunity.lsp.ts-error-translator-nvim" },
   -- lsp round 2
@@ -156,6 +141,7 @@ return {
   { import = "astrocommunity.programming-language-support.web-tools-nvim" },
 
   -- Astro Recipes
+  { import = "astrocommunity.recipes.astrolsp-auto-signature-help" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.recipes.heirline-clock-statusline" },
   { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
@@ -165,8 +151,6 @@ return {
   { import = "astrocommunity.recipes.cache-colorscheme" },
   { import = "astrocommunity.recipes.neo-tree-dark" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
-  { import = "astrocommunity.recipes.telescope-lsp-mappings" },
-  { import = "astrocommunity.recipes.telescope-nvim-snacks" },
   { import = "astrocommunity.recipes.vscode" },
 
   -- Remote Dev
