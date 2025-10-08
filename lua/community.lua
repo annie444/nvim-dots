@@ -6,32 +6,18 @@
 return {
   "AstroNvim/astrocommunity",
 
-  -- color
-  { import = "astrocommunity.color.nvim-highlight-colors" },
-  { import = "astrocommunity.color.vim-highlighter" },
-
   -- color scheme
   { import = "astrocommunity.colorscheme.dracula-nvim" },
-
-  -- comments
-  { import = "astrocommunity.comment.mini-comment" },
 
   -- completion
   { import = "astrocommunity.completion.blink-cmp-emoji" },
   { import = "astrocommunity.completion.blink-cmp-git" },
   { import = "astrocommunity.completion.cmp-nerdfont" },
-  { import = "astrocommunity.completion.cmp-nvim-lua" },
-  { import = "astrocommunity.completion.cmp-spell" },
   { import = "astrocommunity.completion.blink-cmp" },
   { import = "astrocommunity.completion.copilot-lua-cmp" },
 
-  -- debugging
-  { import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
-  { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
-
   -- editing support
   { import = "astrocommunity.editing-support.auto-save-nvim" },
-  { import = "astrocommunity.editing-support.hypersonic-nvim" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
   { import = "astrocommunity.editing-support.refactoring-nvim" },
