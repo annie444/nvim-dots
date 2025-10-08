@@ -162,7 +162,6 @@ return {
   { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.recipes.ai" },
   { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },
-  { import = "astrocommunity.recipes.auto-session-restore" },
   { import = "astrocommunity.recipes.cache-colorscheme" },
   { import = "astrocommunity.recipes.neo-tree-dark" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
