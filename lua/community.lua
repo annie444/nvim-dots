@@ -31,15 +31,11 @@ return {
 
   -- editing support
   { import = "astrocommunity.editing-support.auto-save-nvim" },
-  { import = "astrocommunity.editing-support.cutlass-nvim" },
   { import = "astrocommunity.editing-support.hypersonic-nvim" },
-  { import = "astrocommunity.editing-support.mini-splitjoin" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
   { import = "astrocommunity.editing-support.refactoring-nvim" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
-  { import = "astrocommunity.editing-support.text-case-nvim" },
-  { import = "astrocommunity.editing-support.todo-comments-nvim" },
   { import = "astrocommunity.editing-support.vim-visual-multi" },
 
   -- fuzzy finder
@@ -67,19 +63,14 @@ return {
   { import = "astrocommunity.media.vim-wakatime" },
 
   -- move / motions
-  { import = "astrocommunity.motion.mini-basics" },
   { import = "astrocommunity.motion.mini-bracketed" },
   { import = "astrocommunity.motion.mini-move" },
   { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.motion.flash-nvim" },
-  { import = "astrocommunity.motion.flit-nvim" },
   { import = "astrocommunity.motion.leap-nvim" },
 
   -- NEOVIM
   { import = "astrocommunity.neovim-lua-development.helpview-nvim" },
-
-  -- Notes
-  { import = "astrocommunity.note-taking.venn-nvim" },
 
   -- Packs
   { import = "astrocommunity.pack.ansible" },
@@ -107,7 +98,6 @@ return {
   { import = "astrocommunity.pack.prisma" },
   { import = "astrocommunity.pack.proto" },
   { import = "astrocommunity.pack.python-ruff" },
-  { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   { import = "astrocommunity.pack.ruby" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.sql" },
@@ -140,7 +130,6 @@ return {
   { import = "astrocommunity.recipes.cache-colorscheme" },
   { import = "astrocommunity.recipes.neo-tree-dark" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
-  { import = "astrocommunity.recipes.vscode" },
 
   -- Remote Dev
   { import = "astrocommunity.remote-development.remote-sshfs-nvim" },
@@ -156,9 +145,6 @@ return {
   { import = "astrocommunity.split-and-window.neominimap-nvim" },
   { import = "astrocommunity.split-and-window.windows-nvim" },
 
-  -- Syntax editing
-  { import = "astrocommunity.syntax.vim-easy-align" },
-
   -- Terminal support
   { import = "astrocommunity.terminal-integration.toggleterm-manager-nvim" },
   { import = "astrocommunity.terminal-integration.nvim-unception" },
@@ -166,13 +152,8 @@ return {
   -- Utilities
   { import = "astrocommunity.utility.hover-nvim" },
   { import = "astrocommunity.utility.mason-tool-installer-nvim" },
-  { import = "astrocommunity.utility.noice-nvim" },
-  { import = "astrocommunity.utility.vim-fetch" },
 
   -- Testing
   { import = "astrocommunity.test.nvim-coverage" },
   { import = "astrocommunity.test.neotest" },
-
-  -- Snippets
-  { import = "astrocommunity.snippet.nvim-snippets" },
 }
