@@ -34,7 +34,6 @@ return {
   { import = "astrocommunity.git.gitgraph-nvim" },
 
   -- lsp
-  { import = "astrocommunity.lsp.dev-tools-nvim" },
   { import = "astrocommunity.lsp.actions-preview-nvim" },
   { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
   { import = "astrocommunity.lsp.ts-error-translator-nvim" },
