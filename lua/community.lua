@@ -151,7 +151,6 @@ return {
 
   -- Utilities
   { import = "astrocommunity.utility.noice-nvim" },
-  { import = "astrocommunity.utility.hover-nvim" },
   { import = "astrocommunity.utility.mason-tool-installer-nvim" },
 
   -- Testing
