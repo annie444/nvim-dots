@@ -150,6 +150,7 @@ return {
   { import = "astrocommunity.terminal-integration.nvim-unception" },
 
   -- Utilities
+  { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.utility.hover-nvim" },
   { import = "astrocommunity.utility.mason-tool-installer-nvim" },
 
