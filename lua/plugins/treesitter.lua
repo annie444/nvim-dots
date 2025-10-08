@@ -23,6 +23,9 @@ return {
       "gpg",
       "http",
       "mermaid",
+      "latex",
+      "norg",
+      "typst",
     },
   },
 }

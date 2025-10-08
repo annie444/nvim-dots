@@ -10,7 +10,7 @@ return {
   opts = {
     -- Configure core features of AstroNvim
     features = {
-      large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
+      large_buf = { enabled = true, size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
       diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
@@ -26,13 +26,7 @@ return {
     filetypes = {
       -- see `:h vim.filetype.add` for usage
       extension = {
-        foo = "fooscript",
-      },
-      filename = {
-        [".foorc"] = "fooscript",
-      },
-      pattern = {
-        [".*/etc/foo/.*"] = "fooscript",
+        bats = "bash",
       },
     },
     -- vim options can be configured here
