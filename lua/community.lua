@@ -57,7 +57,6 @@ return {
   { import = "astrocommunity.lsp.ts-error-translator-nvim" },
 
   -- lsp round 2
-  { import = "astrocommunity.lsp.delimited-nvim" },
   { import = "astrocommunity.lsp.lsplinks-nvim" },
 
   -- Markdown + Latex
