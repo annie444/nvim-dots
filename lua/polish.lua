@@ -3,4 +3,5 @@
 -- fit in the normal config locations above can go here
 
 -- Set up custom filetypes
-return {}
+local snacks = require "snacks"
+vim.ui.select = snacks.picker.select

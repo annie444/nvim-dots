@@ -23,6 +23,7 @@ return {
   { import = "astrocommunity.editing-support.refactoring-nvim" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.editing-support.vim-visual-multi" },
+  { import = "astrocommunity.editing-support.copilotchat-nvim" },
 
   -- fuzzy finder
   { import = "astrocommunity.fuzzy-finder.snacks-picker" },
