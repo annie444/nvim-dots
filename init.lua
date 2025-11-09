@@ -32,3 +32,5 @@ end
 
 require "lazy_setup"
 require "polish"
+
+if vim.g.neovide then require "neovide" end
