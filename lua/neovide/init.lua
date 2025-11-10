@@ -63,8 +63,8 @@ vim.g.neovide_confirm_quit = true
 vim.g.neovide_detach_on_quit = "always_quit"
 
 --- window behavior
-vim.g.neovide_fullscreen = true
-vim.g.neovide_macos_simple_fullscreen = true
+vim.g.neovide_fullscreen = false
+vim.g.neovide_macos_simple_fullscreen = false
 vim.g.neovide_remember_window_size = true
 vim.g.neovide_floating_corner_radius = 0.0
 

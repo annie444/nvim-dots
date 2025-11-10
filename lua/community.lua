@@ -27,6 +27,7 @@ return {
 
   -- fuzzy finder
   { import = "astrocommunity.fuzzy-finder.snacks-picker" },
+  { import = "astrocommunity.fuzzy-finder.telescope-nvim" },
 
   -- git plugins
   { import = "astrocommunity.git.blame-nvim" },
