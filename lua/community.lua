@@ -45,7 +45,6 @@ return {
   -- Markdown + Latex
   { import = "astrocommunity.markdown-and-latex.glow-nvim" },
   { import = "astrocommunity.markdown-and-latex.markview-nvim" },
-  { import = "astrocommunity.markdown-and-latex.vimtex" },
 
   -- media
   { import = "astrocommunity.media.vim-wakatime" },

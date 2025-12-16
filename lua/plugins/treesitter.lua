@@ -23,9 +23,10 @@ return {
       "gpg",
       "http",
       "mermaid",
-      "latex",
       "norg",
       "typst",
+      "bash",
+      "regex",
     },
   },
 }
