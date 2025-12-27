@@ -37,7 +37,9 @@ return {
   -- lsp
   { import = "astrocommunity.lsp.actions-preview-nvim" },
   { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
-  { import = "astrocommunity.lsp.ts-error-translator-nvim" },
+  -- 12-26-2025: Disabled due to deprecated function calls in the plugin
+  -- causing the tsserver LSP to crash.
+  -- { import = "astrocommunity.lsp.ts-error-translator-nvim" },
 
   -- lsp round 2
   { import = "astrocommunity.lsp.lsplinks-nvim" },
