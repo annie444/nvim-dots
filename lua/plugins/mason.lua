@@ -9,9 +9,6 @@ return {
     opts_extend = {
       -- Make sure to use the names found in `:Mason`
       ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "debugpy",
         "tree-sitter-cli",
       },
     },

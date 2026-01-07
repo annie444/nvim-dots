@@ -10,9 +10,14 @@ return {
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "AstroNvim/astrolsp",
+    ---@param opts AstroLSPOpts
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "astro" })
+      -- safely extend the servers list
+      opts.servers = opts.servers or {}
+      vim.list_extend(opts.servers, {
+        "astro",
+      })
     end,
   },
   {
