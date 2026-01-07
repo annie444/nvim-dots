@@ -11,27 +11,16 @@ function utils.concat(path_components) return vim.fs.normalize(table.concat(path
 function utils.get_typescript_server_path(root_dir)
   local project_roots = vim.fs.find("node_modules", { path = root_dir, upward = true, limit = math.huge })
 
-  vim.notify_once(
-    string.format("Searching for TypeScript in project roots: %s", table.concat(project_roots, ", ")),
-    vim.log.levels.DEBUG
-  )
-
   local typescript_path = ""
   local stat = nil
-  local err = nil
   for _, project_root in ipairs(project_roots) do
     -- Reset variables for each iteration
     typescript_path = ""
     stat = nil
-    err = nil
     -- Check for node_modules/typescript/lib
     typescript_path = utils.concat { project_root, "typescript" }
-    stat, err, _ = uv.fs_stat(typescript_path)
-    if err then vim.notify(string.format("Error checking for TypeScript path: %s", err), vim.log.levels.WARN) end
-    if stat and stat.type == "directory" then
-      vim.notify_once(string.format("Found TypeScript installation at: %s", typescript_path), vim.log.levels.DEBUG)
-      return utils.concat { typescript_path, "lib" }
-    end
+    stat, _, _ = uv.fs_stat(typescript_path)
+    if stat and stat.type == "directory" then return utils.concat { typescript_path, "lib" } end
   end
 
   return nil
@@ -41,19 +30,12 @@ end
 ---@param lib_dir string
 ---@return string?
 function utils.find_typescript_module_in_lib(lib_dir)
+  local filepath = ""
+  local stat = nil
   for _, filename in ipairs { "tsserverlibrary.js", "typescript.js", "tsserver.js" } do
-    local filepath = utils.concat { lib_dir, filename }
-    local stat, err, name = uv.fs_stat(filepath)
-    if err then
-      vim.notify(
-        string.format("Error checking for TypeScript module file %s: %s", name or filepath, err),
-        vim.log.levels.WARN
-      )
-    end
-    if stat and stat.type == "file" then
-      vim.notify_once(string.format("Found TypeScript module file at: %s", filepath), vim.log.levels.DEBUG)
-      return filepath
-    end
+    filepath = utils.concat { lib_dir, filename }
+    stat, _, _ = uv.fs_stat(filepath)
+    if stat and stat.type == "file" then return filepath end
   end
   return nil
 end
@@ -62,11 +44,7 @@ end
 ---@return string?
 function utils.tsdk(dir)
   local ts_path = utils.get_typescript_server_path(dir)
-  if ts_path then
-    vim.notify_once(string.format("Found TypeScript at: %s", ts_path), vim.log.levels.DEBUG)
-    return ts_path
-  end
-  vim.notify(string.format("Could not find TypeScript installation in node_modules from %s", dir), vim.log.levels.WARN)
+  if ts_path then return ts_path end
   return nil
 end
 
@@ -78,34 +56,32 @@ function utils.resolve_tsdk(package_dir, workspace_dir)
   local tsdk = nil
 
   ---First, try to resolve from workspace directory (if provided)
-  if workspace_dir then tsdk = utils.tsdk(workspace_dir) end
-  if tsdk then
-    local local_tsserverlib = utils.find_typescript_module_in_lib(tsdk)
-    if local_tsserverlib then return tsdk, local_tsserverlib end
+  if workspace_dir then
+    tsdk = utils.tsdk(workspace_dir)
+    if tsdk then
+      local local_tsserverlib = utils.find_typescript_module_in_lib(tsdk)
+      if local_tsserverlib then return tsdk, local_tsserverlib end
+    end
   end
 
   ---Next, try to resolve from current working directory
   tsdk = utils.tsdk(cwd)
   if tsdk then
-    local local_tsserverlib = utils.find_typescript_module_in_lib(tsdk)
-    if local_tsserverlib then return tsdk, local_tsserverlib end
+    local current_tsserverlib = utils.find_typescript_module_in_lib(tsdk)
+    if current_tsserverlib then return tsdk, current_tsserverlib end
   end
 
   ---Finally, fall back to vendored Typescript installation
   tsdk = utils.tsdk(package_dir)
   if tsdk then
     local vendored_tsserverlib = utils.find_typescript_module_in_lib(tsdk)
-    if not vendored_tsserverlib then
-      vim.notify(string.format("Failed to find vendored Typescript module in %s", package_dir), vim.log.levels.WARN)
-      return nil, nil
-    end
-    return tsdk, vendored_tsserverlib
+    if vendored_tsserverlib then return tsdk, vendored_tsserverlib end
   end
 
   --- If we reach here, we couldn't resolve TypeScript installation
   vim.notify(
     string.format("Could not resolve TypeScript installation in workspace or vendored path from %s", package_dir),
-    vim.log.levels.WARN
+    vim.log.levels.ERROR
   )
 
   return nil, nil
