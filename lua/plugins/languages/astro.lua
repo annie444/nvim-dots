@@ -11,6 +11,11 @@ function utils.concat(path_components) return vim.fs.normalize(table.concat(path
 function utils.get_typescript_server_path(root_dir)
   local project_roots = vim.fs.find("node_modules", { path = root_dir, upward = true, limit = math.huge })
 
+  vim.notify_once(
+    string.format("Searching for TypeScript in project roots: %s", table.concat(project_roots, ", ")),
+    vim.log.levels.DEBUG
+  )
+
   for _, project_root in ipairs(project_roots) do
     local typescript_path = utils.concat { project_root, "typescript" }
     local stat, err, name = uv.fs_stat(typescript_path)
@@ -60,18 +65,25 @@ end
 ---@param workspace_dir string?
 ---@return string?, string?
 function utils.resolve_tsdk(package_dir, workspace_dir)
-  workspace_dir = workspace_dir or vim.fn.getcwd()
+  local cwd = vim.fn.getcwd()
   local tsdk = nil
 
+  ---First, try to resolve from workspace directory (if provided)
   if workspace_dir then tsdk = utils.tsdk(workspace_dir) end
-
   if tsdk then
     local local_tsserverlib = utils.find_typescript_module_in_lib(tsdk)
     if local_tsserverlib then return tsdk, local_tsserverlib end
   end
 
-  tsdk = utils.tsdk(package_dir)
+  ---Next, try to resolve from current working directory
+  tsdk = utils.tsdk(cwd)
+  if tsdk then
+    local local_tsserverlib = utils.find_typescript_module_in_lib(tsdk)
+    if local_tsserverlib then return tsdk, local_tsserverlib end
+  end
 
+  ---Finally, fall back to vendored Typescript installation
+  tsdk = utils.tsdk(package_dir)
   if tsdk then
     local vendored_tsserverlib = utils.find_typescript_module_in_lib(tsdk)
     if not vendored_tsserverlib then
@@ -81,6 +93,7 @@ function utils.resolve_tsdk(package_dir, workspace_dir)
     return tsdk, vendored_tsserverlib
   end
 
+  --- If we reach here, we couldn't resolve TypeScript installation
   vim.notify(
     string.format("Could not resolve TypeScript installation in workspace or vendored path from %s", package_dir),
     vim.log.levels.WARN
@@ -125,8 +138,15 @@ return {
         before_init = function(_, config)
           local package_dir = vim.fn.expand "$MASON/packages/astro-language-server"
 
-          config.init_options.typescript.serverPath = utils.resolve_tsserver(package_dir)
-          config.init_options.typescript.tsdk = utils.resolve_tsdk(package_dir)
+          local root_dir = ""
+          if type(config.root_dir) == "function" then root_dir = config.root_dir() or "" end
+          if type(config.root_dir) == "string" then
+            root_dir = config.root_dir--[[@as string|nil]]
+          end
+          if root_dir == nil or root_dir == "" then root_dir = vim.fn.getcwd() end
+
+          config.init_options.typescript.serverPath = utils.resolve_tsserver(package_dir, root_dir)
+          config.init_options.typescript.tsdk = utils.resolve_tsdk(package_dir, root_dir)
         end,
       }
 
