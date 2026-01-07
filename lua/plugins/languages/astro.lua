@@ -16,12 +16,16 @@ function utils.get_typescript_server_path(root_dir)
     vim.log.levels.DEBUG
   )
 
+  local typescript_path = ""
   local stat = nil
   local err = nil
   for _, project_root in ipairs(project_roots) do
+    -- Reset variables for each iteration
+    typescript_path = ""
     stat = nil
     err = nil
-    local typescript_path = utils.concat { project_root, "typescript" }
+    -- Check for node_modules/typescript/lib
+    typescript_path = utils.concat { project_root, "typescript" }
     stat, err, _ = uv.fs_stat(typescript_path)
     if err then vim.notify(string.format("Error checking for TypeScript path: %s", err), vim.log.levels.WARN) end
     if stat and stat.type == "directory" then return utils.concat { typescript_path, "lib" } end
