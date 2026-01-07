@@ -16,16 +16,14 @@ function utils.get_typescript_server_path(root_dir)
     vim.log.levels.DEBUG
   )
 
+  local stat = nil
+  local err = nil
   for _, project_root in ipairs(project_roots) do
+    stat = nil
+    err = nil
     local typescript_path = utils.concat { project_root, "typescript" }
-    local stat, err, name = uv.fs_stat(typescript_path)
-    if err then
-      vim.notify(
-        string.format("Error checking for TypeScript path %s: %s", name or typescript_path, err),
-        vim.log.levels.WARN
-      )
-      return nil
-    end
+    stat, err, _ = uv.fs_stat(typescript_path)
+    if err then vim.notify(string.format("Error checking for TypeScript path: %s", err), vim.log.levels.WARN) end
     if stat and stat.type == "directory" then return utils.concat { typescript_path, "lib" } end
   end
 
@@ -51,10 +49,9 @@ function utils.find_typescript_module_in_lib(lib_dir)
   return nil
 end
 
----@param dir string?
+---@param dir string
 ---@return string?
 function utils.tsdk(dir)
-  dir = dir or vim.fn.getcwd()
   local ts_path = utils.get_typescript_server_path(dir)
   if ts_path then return ts_path end
   vim.notify(string.format("Could not find TypeScript installation in node_modules from %s", dir), vim.log.levels.WARN)
