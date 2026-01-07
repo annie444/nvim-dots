@@ -36,10 +36,6 @@ return {
 
   -- lsp
   { import = "astrocommunity.lsp.actions-preview-nvim" },
-  { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
-  -- 12-26-2025: Disabled due to deprecated function calls in the plugin
-  -- causing the tsserver LSP to crash.
-  -- { import = "astrocommunity.lsp.ts-error-translator-nvim" },
 
   -- lsp round 2
   { import = "astrocommunity.lsp.lsplinks-nvim" },
@@ -60,48 +56,6 @@ return {
 
   -- NEOVIM
   { import = "astrocommunity.neovim-lua-development.helpview-nvim" },
-
-  -- Packs
-  { import = "astrocommunity.pack.ansible" },
-  { import = "astrocommunity.pack.astro" },
-  { import = "astrocommunity.pack.bash" },
-  { import = "astrocommunity.pack.cmake" },
-  { import = "astrocommunity.pack.cpp" },
-  { import = "astrocommunity.pack.docker" },
-  { import = "astrocommunity.pack.eslint" },
-  { import = "astrocommunity.pack.fish" },
-  { import = "astrocommunity.pack.full-dadbod" },
-  { import = "astrocommunity.pack.gleam" },
-  { import = "astrocommunity.pack.go" },
-  { import = "astrocommunity.pack.golangci-lint" },
-  { import = "astrocommunity.pack.helm" },
-  { import = "astrocommunity.pack.html-css" },
-  { import = "astrocommunity.pack.java" },
-  { import = "astrocommunity.pack.json" },
-  { import = "astrocommunity.pack.just" },
-  { import = "astrocommunity.pack.julia" },
-  { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.markdown" },
-  { import = "astrocommunity.pack.mdx" },
-  { import = "astrocommunity.pack.php" },
-  { import = "astrocommunity.pack.prisma" },
-  { import = "astrocommunity.pack.proto" },
-  { import = "astrocommunity.pack.python-ruff" },
-  { import = "astrocommunity.pack.ruby" },
-  { import = "astrocommunity.pack.rust" },
-  { import = "astrocommunity.pack.sql" },
-  { import = "astrocommunity.pack.svelte" },
-  { import = "astrocommunity.pack.tailwindcss" },
-  { import = "astrocommunity.pack.terraform" },
-  { import = "astrocommunity.pack.toml" },
-  { import = "astrocommunity.pack.typescript" },
-  { import = "astrocommunity.pack.typescript-all-in-one" },
-  { import = "astrocommunity.pack.typst" },
-  { import = "astrocommunity.pack.vue" },
-  { import = "astrocommunity.pack.wgsl" },
-  { import = "astrocommunity.pack.xml" },
-  { import = "astrocommunity.pack.yaml" },
-  { import = "astrocommunity.pack.zig" },
 
   -- Extra support
   { import = "astrocommunity.programming-language-support.csv-vim" },
