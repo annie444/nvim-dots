@@ -47,7 +47,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "basedpyright", "ruff" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "ty", "ruff" })
     end,
   },
   {
@@ -62,7 +62,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
       opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "basedpyright", "ruff", "debugpy" })
+        require("astrocore").list_insert_unique(opts.ensure_installed, { "ty", "ruff", "debugpy" })
     end,
   },
   {
