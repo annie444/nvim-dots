@@ -7,7 +7,7 @@ return {
   "AstroNvim/astrocommunity",
 
   -- AI
-  { import = "astrocommunity.editing-support.copilotchat-nvim" },
+  { import = "astrocommunity.ai.copilotchat-nvim" },
 
   -- color scheme
   { import = "astrocommunity.colorscheme.dracula-nvim" },
