@@ -1,17 +1,8 @@
 local debugging = false
-if vim.env.NVIM_LAZY_DEBUG ~= nil then
-  if
-    vim.env.NVIM_LAZY_DEBUG == 1
-    or vim.env.NVIM_LAZY_DEBUG == "1"
-    or vim.env.NVIM_LAZY_DEBUG == "true"
-    or vim.env.NVIM_LAZY_DEBUG == "True"
-    or vim.env.NVIM_LAZY_DEBUG == "TRUE"
-    or vim.env.NVIM_LAZY_DEBUG == "yes"
-    or vim.env.NVIM_LAZY_DEBUG == "Yes"
-    or vim.env.NVIM_LAZY_DEBUG == "YES"
-  then
-    debugging = true
-  end
+local lazy_debug = vim.env.NVIM_LAZY_DEBUG
+if lazy_debug ~= nil then
+  lazy_debug = lazy_debug:lower()
+  if lazy_debug == "1" or lazy_debug == "true" or lazy_debug == "yes" then debugging = true end
 end
 
 require("lazy").setup({
