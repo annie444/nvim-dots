@@ -2,23 +2,22 @@
 return {
   {
     "AstroNvim/astrocore",
-    ---@type AstroCoreOpts
-    opts = { filetypes = { extension = {
-      pcss = "postcss",
-      postcss = "postcss",
-    } } },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
+    ---@param opts AstroCoreOpts
     opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed = require("astrocore").list_insert_unique(
-          opts.ensure_installed,
+      if opts.treesitter.ensure_installed ~= "all" then
+        opts.treesitter.ensure_installed = require("astrocore").list_insert_unique(
+          opts.treesitter.ensure_installed,
           { "html", "css", "scss", "styled", "php", "phpdoc" }
         )
       end
       vim.treesitter.language.register("scss", "less")
       vim.treesitter.language.register("scss", "postcss")
+      return require("astrocore").extend_tbl(opts, {
+        filetypes = { extension = {
+          pcss = "postcss",
+          postcss = "postcss",
+        } },
+      })
     end,
   },
   {

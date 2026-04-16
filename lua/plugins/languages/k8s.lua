@@ -13,6 +13,11 @@ return {
       local tmpl_filetype = function(path, _) return is_helm_file(path) and "helm" or "template" end
       local tpl_filetype = function(path, _) return is_helm_file(path) and "helm" or "smarty" end
 
+      if opts.treesitter.ensure_installed ~= "all" then
+        opts.treesitter.ensure_installed =
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "helm" })
+      end
+
       return require("astrocore").extend_tbl(opts, {
         autocmds = {
           helm_commentstring = {
@@ -40,14 +45,6 @@ return {
           },
         },
       })
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "helm" })
-      end
     end,
   },
   {

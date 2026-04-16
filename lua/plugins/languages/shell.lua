@@ -13,10 +13,13 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
+    "AstroNvim/astrocore",
+    ---@param opts AstroCoreOpts
     opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "bash", "fish" })
+      -- Ensure that opts.ensure_installed exists and is a table or string "all".
+      if opts.treesitter.ensure_installed ~= "all" then
+        opts.treesitter.ensure_installed =
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "bash", "fish" })
       end
     end,
   },

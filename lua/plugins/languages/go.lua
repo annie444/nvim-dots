@@ -68,11 +68,13 @@ return {
   },
   -- Golang support
   {
-    "nvim-treesitter/nvim-treesitter",
+    "AstroNvim/astrocore",
     opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed =
-          require("astrocore").list_insert_unique(opts.ensure_installed, { "go", "gomod", "gosum", "gowork" })
+      if opts.treesitter.ensure_installed ~= "all" then
+        opts.treesitter.ensure_installed = require("astrocore").list_insert_unique(
+          opts.treesitter.ensure_installed,
+          { "go", "gomod", "gosum", "gowork" }
+        )
       end
     end,
   },
@@ -126,7 +128,6 @@ return {
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
       "williamboman/mason.nvim", -- by default use Mason for go dependencies
     },
     opts = {},

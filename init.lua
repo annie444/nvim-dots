@@ -28,5 +28,5 @@ end
 require "lazy_setup"
 require "polish"
 
--- validate that lazy is available
+-- load Neovide-specific configuration when running in Neovide
 if vim.g.neovide then require "neovide" end

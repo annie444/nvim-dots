@@ -47,18 +47,6 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed = require("astrocore").list_insert_unique(
-          opts.ensure_installed or {},
-          { "javascript", "typescript", "tsx", "jsdoc", "json" }
-        )
-      end
-    end,
-  },
-
-  {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
       opts.ensure_installed =
@@ -255,37 +243,45 @@ return {
   },
   {
     "AstroNvim/astrocore",
-    ---@type AstroCoreOpts
-    opts = {
-      autocmds = {
-        -- set up autocommand to choose the correct language server
-        typescript_deno_switch = {
-          {
-            event = "LspAttach",
-            callback = function(args)
-              local bufnr = args.buf
-              local curr_client = vim.lsp.get_client_by_id(args.data.client_id)
+    ---@param opts AstroCoreOpts
+    opts = function(_, opts)
+      if opts.treesitter.ensure_installed ~= "all" then
+        opts.treesitter.ensure_installed = require("astrocore").list_insert_unique(
+          opts.treesitter.ensure_installed,
+          { "javascript", "typescript", "tsx", "jsdoc", "json" }
+        )
+      end
+      return require("astrocore").extend_tbl(opts, {
+        autocmds = {
+          -- set up autocommand to choose the correct language server
+          typescript_deno_switch = {
+            {
+              event = "LspAttach",
+              callback = function(args)
+                local bufnr = args.buf
+                local curr_client = vim.lsp.get_client_by_id(args.data.client_id)
 
-              if curr_client and curr_client.name == "denols" then
-                local clients = (vim.lsp.get_clients) {
-                  bufnr = bufnr,
-                  name = "vtsls",
-                }
-                for _, client in ipairs(clients) do
-                  vim.lsp.stop_client(client.id, true)
+                if curr_client and curr_client.name == "denols" then
+                  local clients = (vim.lsp.get_clients) {
+                    bufnr = bufnr,
+                    name = "vtsls",
+                  }
+                  for _, client in ipairs(clients) do
+                    vim.lsp.stop_client(client.id, true)
+                  end
                 end
-              end
 
-              -- if vtsls attached, stop it if there is a denols server attached
-              if curr_client and curr_client.name == "vtsls" then
-                if next((vim.lsp.get_clients) { bufnr = bufnr, name = "denols" }) then
-                  vim.lsp.stop_client(curr_client.id, true)
+                -- if vtsls attached, stop it if there is a denols server attached
+                if curr_client and curr_client.name == "vtsls" then
+                  if next((vim.lsp.get_clients) { bufnr = bufnr, name = "denols" }) then
+                    vim.lsp.stop_client(curr_client.id, true)
+                  end
                 end
-              end
-            end,
+              end,
+            },
           },
         },
-      },
-    },
+      })
+    end,
   },
 }

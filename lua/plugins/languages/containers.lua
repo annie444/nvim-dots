@@ -2,15 +2,16 @@
 return {
   {
     "AstroNvim/astrocore",
-    ---@type AstroCoreOpts
-    opts = { filetypes = { filename = { ["docker-compose.yaml"] = "yaml.docker-compose" } } },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
+    ---@param opts AstroCoreOpts
     opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "dockerfile" })
+      if opts.treesitter.ensure_installed ~= "all" then
+        opts.treesitter.ensure_installed =
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "dockerfile" })
       end
+      return require("astrocore").extend_tbl(
+        opts,
+        { filetypes = { filename = { ["docker-compose.yaml"] = "yaml.docker-compose" } } }
+      )
     end,
   },
   {
