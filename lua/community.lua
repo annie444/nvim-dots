@@ -32,7 +32,6 @@ return {
   { import = "astrocommunity.completion.blink-copilot" },
   { import = "astrocommunity.completion.cmp-nerdfont" },
   { import = "astrocommunity.completion.copilot-lua-cmp" },
-  { import = "astrocommunity.completion.blink-copilot" },
 
   -- Debugging
   { import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
