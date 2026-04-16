@@ -138,11 +138,6 @@ return {
 
   -- Astro Recipes
   { import = "astrocommunity.recipes.ai" },
-  { import = "astrocommunity.recipes.astrolsp-auto-signature-help" },
-  { import = "astrocommunity.recipes.heirline-clock-statusline" },
-  { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
-  { import = "astrocommunity.recipes.heirline-tabline-buffer-number" },
-  { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
   { import = "astrocommunity.recipes.vscode" },
