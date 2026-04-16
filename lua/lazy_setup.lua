@@ -33,7 +33,10 @@ require("lazy").setup({
   -- Configure any other `lazy.nvim` configuration options here
   lockfile = vim.fn.stdpath "config" .. "/lazy-lock.json",
   ---@type number? limit the maximum amount of concurrent tasks
-  concurrency = jit.os:find "Windows" and (vim.uv.available_parallelism() * 2) or nil,
+  concurrency = jit.os:find "Windows"
+      and (((vim.uv or vim.loop) and (vim.uv or vim.loop).available_parallelism)
+        and ((vim.uv or vim.loop).available_parallelism() * 2) or nil)
+    or nil,
   git = {
     -- defaults for the `Lazy log` command
     log = { "-8" }, -- show the last 8 commits
