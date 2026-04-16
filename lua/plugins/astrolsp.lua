@@ -22,8 +22,8 @@ return {
       timeout_ms = 10000, -- set timeout for formatting requests in milliseconds
     },
     defaults = { hover = false, signature_help = false }, -- disable hover and signature help so noice can handle them
+    -- first key is the `augroup` to add the auto commands to (:h augroup)
     autocmds = {
-      -- first key is the `augroup` to add the auto commands to (:h augroup)
       lsp_codelens_refresh = {
         -- Optional condition to create/delete auto command group
         -- can either be a string of a client capability or a function of `fun(client, bufnr): boolean`
@@ -38,7 +38,7 @@ return {
           -- the rest of the autocmd options (:h nvim_create_autocmd)
           desc = "Refresh codelens (buffer)",
           callback = function(args)
-            if require("astrolsp").config.features.codelens then vim.lsp.codelens.refresh { bufnr = args.buf } end
+            if require("astrolsp").config.features.codelens then vim.lsp.codelens.enable(true, { bufnr = args.buf }) end
           end,
         },
       },
@@ -54,8 +54,8 @@ return {
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
           desc = "Toggle LSP semantic highlight (buffer)",
-          cond = function(client, bufnr)
-            return client:supports_method("textDocument/semanticTokens/full", bufnr) and vim.lsp.semantic_tokens ~= nil
+          cond = function(client)
+            return client:supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
       },

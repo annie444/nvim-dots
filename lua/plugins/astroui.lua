@@ -16,6 +16,14 @@ return {
         -- Normal = { bg = "#000000" },
       },
     },
+    status = {
+      attributes = {
+        bufnr = {
+          bold = true,
+          underline = true,
+        },
+      },
+    },
     -- Icons can be configured throughout the interface
     icons = {
       -- configure the loading of the lsp in the status line
@@ -29,6 +37,7 @@ return {
       LSPLoading8 = "⠧",
       LSPLoading9 = "⠇",
       LSPLoading10 = "⠏",
+      Clock = "",
     },
   },
 }
