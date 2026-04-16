@@ -6,7 +6,7 @@ return {
     opts = function(_, opts)
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "sql" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "sql" })
       end
       return require("astrocore").extend_tbl(opts, {
         filetypes = {
@@ -20,13 +20,13 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "sqls" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "sqls" })
     end,
   },
   {
     "jay-babu/mason-null-ls.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "sqlfluff" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "sqlfluff" })
       opts.handlers = opts.handlers or {}
 
       opts.handlers.sqlfluff = function()
@@ -39,7 +39,7 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "sqlfluff", "sqls" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "sqlfluff", "sqls" })
     end,
   },
   {

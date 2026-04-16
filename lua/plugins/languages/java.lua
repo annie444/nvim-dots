@@ -4,27 +4,27 @@ return {
     opts = function(_, opts)
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "java" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "java" })
       end
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "jdtls" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "jdtls" })
     end,
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "javadbg", "javatest" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "javadbg", "javatest" })
     end,
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
       opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "jdtls", "java-debug-adapter", "java-test" })
+        require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "jdtls", "java-debug-adapter", "java-test" })
     end,
   },
   {

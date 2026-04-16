@@ -247,7 +247,7 @@ return {
     opts = function(_, opts)
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed = require("astrocore").list_insert_unique(
-          opts.treesitter.ensure_installed,
+          opts.treesitter.ensure_installed or {},
           { "javascript", "typescript", "tsx", "jsdoc", "json" }
         )
       end

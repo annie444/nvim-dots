@@ -13,7 +13,7 @@ return {
           },
         },
       })
-      if is_linux_arm then opts.servers = require("astrocore").list_insert_unique(opts.servers, { "clangd" }) end
+      if is_linux_arm then opts.servers = require("astrocore").list_insert_unique(opts.servers or {}, { "clangd" }) end
     end,
   },
   {
@@ -21,7 +21,7 @@ return {
     opts = function(_, opts)
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed = require("astrocore").list_insert_unique(
-          opts.treesitter.ensure_installed,
+          opts.treesitter.ensure_installed or {},
           { "cmake", "cpp", "c", "objc", "cuda", "proto" }
         )
       end
@@ -32,7 +32,7 @@ return {
     opts = function(_, opts)
       local tools = { "neocmake" }
       if not is_linux_arm then table.insert(tools, "clangd") end
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, tools)
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, tools)
     end,
   },
   {
@@ -80,7 +80,7 @@ return {
       {
         "jay-babu/mason-nvim-dap.nvim",
         opts = function(_, opts)
-          opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "codelldb" })
+          opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "codelldb" })
         end,
       },
     },
@@ -91,7 +91,7 @@ return {
     opts = function(_, opts)
       local tools = { "neocmakelsp", "codelldb" }
       if not is_linux_arm then table.insert(tools, "clangd") end
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, tools)
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, tools)
     end,
   },
 }

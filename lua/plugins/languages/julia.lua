@@ -35,7 +35,7 @@ return {
     opts = function(_, opts)
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "julia" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "julia" })
       end
     end,
   },
@@ -43,7 +43,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
       if not julials_manually_setup() then
-        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "julials" })
+        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "julials" })
       end
     end,
   },
@@ -51,7 +51,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
       if not julials_manually_setup() then
-        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "julia-lsp" })
+        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "julia-lsp" })
       end
     end,
   },

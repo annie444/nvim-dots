@@ -7,20 +7,20 @@ return {
       -- Ensure that opts.ensure_installed exists and is a table or string "all".
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "toml" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "toml" })
       end
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "taplo" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "taplo" })
     end,
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "taplo" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "taplo" })
     end,
   },
 }

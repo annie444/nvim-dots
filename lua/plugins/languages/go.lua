@@ -72,7 +72,7 @@ return {
     opts = function(_, opts)
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed = require("astrocore").list_insert_unique(
-          opts.treesitter.ensure_installed,
+          opts.treesitter.ensure_installed or {},
           { "go", "gomod", "gosum", "gowork" }
         )
       end
@@ -83,7 +83,7 @@ return {
     "jay-babu/mason-null-ls.nvim",
     opts = function(_, opts)
       opts.ensure_installed = require("astrocore").list_insert_unique(
-        opts.ensure_installed,
+        opts.ensure_installed or {},
         { "gomodifytags", "iferr", "impl", "gotests", "goimports" }
       )
     end,
@@ -91,14 +91,14 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "gopls" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "gopls" })
     end,
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
       opts.ensure_installed = require("astrocore").list_insert_unique(
-        opts.ensure_installed,
+        opts.ensure_installed or {},
         { "delve", "gopls", "gomodifytags", "gotests", "iferr", "impl", "goimports", "golangci-lint-langserver" }
       )
     end,
@@ -111,7 +111,7 @@ return {
       {
         "jay-babu/mason-nvim-dap.nvim",
         opts = function(_, opts)
-          opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "delve" })
+          opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "delve" })
         end,
       },
     },

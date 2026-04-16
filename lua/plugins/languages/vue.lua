@@ -4,7 +4,7 @@ return {
     ---@param opts AstroLSPOpts
     opts = function(_, opts)
       local astrocore = require "astrocore"
-      local vtsls_ft = astrocore.list_insert_unique(vim.tbl_get(opts, "config", "vtsls", "filetypes") or {
+      local vtsls_ft = astrocore.list_insert_unique(vim.tbl_get(opts or {}, "config", "vtsls", "filetypes") or {
         "javascript",
         "javascriptreact",
         "javascript.jsx",
@@ -66,7 +66,7 @@ return {
                   enableForWorkspaceTypeScriptVersions = true,
                 }
 
-                astrocore.list_insert_unique(config.settings.vtsls.tsserver.globalPlugins, { vue_plugin_config })
+                astrocore.list_insert_unique(config.settings.vtsls.tsserver.globalPlugins or {}, { vue_plugin_config })
               end
             end,
           },
@@ -81,27 +81,29 @@ return {
       -- Ensure that opts.ensure_installed exists and is a table or string "all".
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "vue" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "vue" })
       end
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "volar" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "volar" })
     end,
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "js" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "js" })
     end,
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
-      opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "vue-language-server", "js-debug-adapter" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(
+        opts.ensure_installed or {},
+        { "vue-language-server", "js-debug-adapter" }
+      )
     end,
   },
 }

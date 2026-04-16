@@ -19,7 +19,7 @@ return {
       -- Ensure that opts.ensure_installed exists and is a table or string "all".
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "bash", "fish" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "bash", "fish" })
       end
     end,
   },
@@ -27,7 +27,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
       opts.ensure_installed = require("astrocore").list_insert_unique(
-        opts.ensure_installed,
+        opts.ensure_installed or {},
         { "bash-language-server", "shellcheck", "shfmt", "bash-debug-adapter" }
       )
     end,
@@ -35,20 +35,20 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "bashls" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "bashls" })
     end,
   },
   {
     "jay-babu/mason-null-ls.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "shfmt", "shellcheck" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "shfmt", "shellcheck" })
       if opts.handlers then opts.handlers.shfmt = function() end end
     end,
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "bash" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "bash" })
     end,
   },
 }

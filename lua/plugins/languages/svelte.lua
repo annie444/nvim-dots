@@ -7,14 +7,14 @@ return {
       -- Ensure that opts.ensure_installed exists and is a table or string "all".
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "svelte" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "svelte" })
       end
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "svelte" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "svelte" })
     end,
   },
   {
@@ -71,14 +71,16 @@ return {
   {
     "jay-babu/mason-nvim-dap.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "js" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "js" })
     end,
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
-      opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "svelte-language-server", "js-debug-adapter" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(
+        opts.ensure_installed or {},
+        { "svelte-language-server", "js-debug-adapter" }
+      )
     end,
   },
 }

@@ -6,7 +6,7 @@ return {
     opts = function(_, opts)
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed = require("astrocore").list_insert_unique(
-          opts.treesitter.ensure_installed,
+          opts.treesitter.ensure_installed or {},
           { "html", "css", "scss", "styled", "php", "phpdoc" }
         )
       end
@@ -23,8 +23,10 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
-      opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "html", "cssls", "emmet_ls", "phpactor" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(
+        opts.ensure_installed or {},
+        { "html", "cssls", "emmet_ls", "phpactor" }
+      )
     end,
   },
   {
@@ -40,7 +42,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
       opts.ensure_installed = require("astrocore").list_insert_unique(
-        opts.ensure_installed,
+        opts.ensure_installed or {},
         { "html-lsp", "css-lsp", "emmet-ls", "phpactor", "php-debug-adapter", "php-cs-fixer" }
       )
     end,
@@ -48,13 +50,13 @@ return {
   {
     "jay-babu/mason-nvim-dap.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "php" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "php" })
     end,
   },
   {
     "jay-babu/mason-null-ls.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "php-cs-fixer" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "php-cs-fixer" })
     end,
   },
   {

@@ -6,7 +6,7 @@ return {
     opts = function(_, opts)
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "markdown", "markdown_inline" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "markdown", "markdown_inline" })
       end
       return require("astrocore").extend_tbl(opts, {
         filetypes = { extension = {
@@ -19,14 +19,14 @@ return {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
       opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "marksman", "mdx_analyzer" })
+        require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "marksman", "mdx_analyzer" })
     end,
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
       opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "marksman", "mdx-analyzer" })
+        require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "marksman", "mdx-analyzer" })
     end,
   },
 }

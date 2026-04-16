@@ -6,7 +6,7 @@ return {
     opts = function(_, opts)
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "just" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "just" })
       end
       return require("astrocore").extend_tbl(opts, {
         filetypes = {
@@ -24,7 +24,7 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "just-lsp" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "just-lsp" })
     end,
   },
 }

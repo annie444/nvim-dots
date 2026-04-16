@@ -7,7 +7,7 @@ return {
       -- Ensure that opts.ensure_installed exists and is a table or string "all".
       if opts.treesitter.ensure_installed ~= "all" then
         opts.treesitter.ensure_installed =
-          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed, { "ruby" })
+          require("astrocore").list_insert_unique(opts.treesitter.ensure_installed or {}, { "ruby" })
       end
     end,
   },
@@ -15,14 +15,14 @@ return {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
       opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "solargraph", "standardrb" })
+        require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "solargraph", "standardrb" })
     end,
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = function(_, opts)
       opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "solargraph", "standardrb" })
+        require("astrocore").list_insert_unique(opts.ensure_installed or {}, { "solargraph", "standardrb" })
     end,
   },
   {
