@@ -1,3 +1,17 @@
+local debugging = false
+if vim.env.NVIM_LAZY_DEBUG ~= nil then
+  if vim.env.NVIM_LAZY_DEBUG == 1
+    or vim.env.NVIM_LAZY_DEBUG == "1"
+    or vim.env.NVIM_LAZY_DEBUG == "true"
+    or vim.env.NVIM_LAZY_DEBUG == "True"
+    or vim.env.NVIM_LAZY_DEBUG == "TRUE"
+    or vim.env.NVIM_LAZY_DEBUG == "yes"
+    or vim.env.NVIM_LAZY_DEBUG == "Yes"
+    or vim.env.NVIM_LAZY_DEBUG == "YES" then
+    debugging = true
+  end
+end
+
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
@@ -99,7 +113,7 @@ require("lazy").setup({
   },
   state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
   profiling = {  -- Enable profiling of lazy.nvim.
-    loader = false, -- Enables extra stats on the debug tab related to the loader cache.
-    require = false, -- Track each new require in the Lazy profiling tab
+    loader = debugging, -- Enables extra stats on the debug tab related to the loader cache.
+    require = debugging, -- Track each new require in the Lazy profiling tab
   },
 } --[[@as LazyConfig]])
