@@ -24,7 +24,6 @@ return {
     defaults = { hover = false, signature_help = false }, -- disable hover and signature help so noice can handle them
     -- first key is the `augroup` to add the auto commands to (:h augroup)
     autocmds = {
-      -- first key is the `augroup` to add the auto commands to (:h augroup)
       lsp_codelens_refresh = {
         -- Optional condition to create/delete auto command group
         -- can either be a string of a client capability or a function of `fun(client, bufnr): boolean`
