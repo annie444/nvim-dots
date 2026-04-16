@@ -1,13 +1,15 @@
 local debugging = false
 if vim.env.NVIM_LAZY_DEBUG ~= nil then
-  if vim.env.NVIM_LAZY_DEBUG == 1
+  if
+    vim.env.NVIM_LAZY_DEBUG == 1
     or vim.env.NVIM_LAZY_DEBUG == "1"
     or vim.env.NVIM_LAZY_DEBUG == "true"
     or vim.env.NVIM_LAZY_DEBUG == "True"
     or vim.env.NVIM_LAZY_DEBUG == "TRUE"
     or vim.env.NVIM_LAZY_DEBUG == "yes"
     or vim.env.NVIM_LAZY_DEBUG == "Yes"
-    or vim.env.NVIM_LAZY_DEBUG == "YES" then
+    or vim.env.NVIM_LAZY_DEBUG == "YES"
+  then
     debugging = true
   end
 end
@@ -29,9 +31,9 @@ require("lazy").setup({
   { import = "plugins" },
 } --[[@as LazySpec]], {
   -- Configure any other `lazy.nvim` configuration options here
-  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
+  lockfile = vim.fn.stdpath "config" .. "/lazy-lock.json",
   ---@type number? limit the maximum amount of concurrent tasks
-  concurrency = jit.os:find("Windows") and (vim.uv.available_parallelism() * 2) or nil,
+  concurrency = jit.os:find "Windows" and (vim.uv.available_parallelism() * 2) or nil,
   git = {
     -- defaults for the `Lazy log` command
     log = { "-8" }, -- show the last 8 commits
@@ -45,7 +47,7 @@ require("lazy").setup({
   },
   pkg = {
     enabled = true,
-    cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
+    cache = vim.fn.stdpath "state" .. "/lazy/pkg-cache.lua",
     sources = { -- the first package source that is found for a plugin will be used.
       "lazy",
       "rockspec", -- will only be used when rocks.enabled is true
@@ -54,7 +56,7 @@ require("lazy").setup({
   },
   rocks = {
     enabled = true,
-    root = vim.fn.stdpath("data") .. "/lazy-rocks",
+    root = vim.fn.stdpath "data" .. "/lazy-rocks",
     server = "https://lumen-oss.github.io/rocks-binaries/",
     -- use hererocks to install luarocks?
     -- set to `nil` to use hererocks when luarocks is not found
@@ -107,12 +109,12 @@ require("lazy").setup({
   -- so :help works even for plugins that don't have vim docs.
   readme = {
     enabled = true,
-    root = vim.fn.stdpath("state") .. "/lazy/readme",
+    root = vim.fn.stdpath "state" .. "/lazy/readme",
     files = { "README.md", "lua/**/README.md" },
     skip_if_doc_exists = true, -- only generate markdown helptags for plugins that don't have docs
   },
-  state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
-  profiling = {  -- Enable profiling of lazy.nvim.
+  state = vim.fn.stdpath "state" .. "/lazy/state.json", -- state info for checker and other things
+  profiling = { -- Enable profiling of lazy.nvim.
     loader = debugging, -- Enables extra stats on the debug tab related to the loader cache.
     require = debugging, -- Track each new require in the Lazy profiling tab
   },
