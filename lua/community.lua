@@ -161,7 +161,6 @@ return {
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
-  { import = "astrocommunity.recipes.telescope-nvim-snacks" },
   { import = "astrocommunity.recipes.vscode" },
 
   -- Registers
