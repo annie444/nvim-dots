@@ -5,9 +5,9 @@ return {
   -- use mason-tool-installer for automatically installing Mason packages
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    opts = {
+    opts = function(_, opts)
       -- Make sure to use the names found in `:Mason`
-      ensure_installed = {
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         -- install language servers
         "lua-language-server",
 
@@ -19,7 +19,7 @@ return {
 
         -- install any other package
         "tree-sitter-cli",
-      },
-    },
+      })
+    end,
   },
 }
