@@ -3,16 +3,11 @@
 ---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
-  dependencies = {
-    "nvimtools/none-ls-extras.nvim",
-  },
   opts = function(_, opts)
     -- opts variable is the default configuration table for the setup function call
     local null_ls = require "null-ls"
 
-    ---Safe import wrapper function
-    ---@param name string
-    ---@return any|nil
+    -- Safe import wrapper function
     local function none_ls(name)
       local ok, module = pcall(require, string.format("none-ls.%s", name))
       if not ok then return nil end
