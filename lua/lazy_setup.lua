@@ -15,36 +15,24 @@ require("lazy").setup({
   { import = "plugins" },
 } --[[@as LazySpec]], {
   -- Configure any other `lazy.nvim` configuration options here
-  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json"
+  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
   ---@type number? limit the maximum amount of concurrent tasks
   concurrency = jit.os:find("Windows") and (vim.uv.available_parallelism() * 2) or nil,
   git = {
     -- defaults for the `Lazy log` command
-    -- log = { "--since=3 days ago" }, -- show commits from the last 3 days
     log = { "-8" }, -- show the last 8 commits
     timeout = 120, -- kill processes that take more than 2 minutes
     url_format = "https://github.com/%s.git",
-    -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
-    -- then set the below to false. This should work, but is NOT supported and will
-    -- increase downloads a lot.
     filter = true,
-    -- rate of network related git operations (clone, fetch, checkout)
-    throttle = {
+    throttle = { -- rate of network related git operations (clone, fetch, checkout)
       enabled = false, -- not enabled by default
-      -- max 2 ops every 5 seconds
-      rate = 2,
-      duration = 5 * 1000, -- in ms
     },
-    -- Time in seconds to wait before running fetch again for a plugin.
-    -- Repeated update/check operations will not run again until this
-    -- cooldown period has passed.
-    cooldown = 0,
+    cooldown = 3, -- Time in seconds to wait before running fetch again for a plugin.
   },
   pkg = {
     enabled = true,
     cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
-    -- the first package source that is found for a plugin will be used.
-    sources = {
+    sources = { -- the first package source that is found for a plugin will be used.
       "lazy",
       "rockspec", -- will only be used when rocks.enabled is true
       "packspec",
@@ -65,30 +53,23 @@ require("lazy").setup({
     colorscheme = { "dracula" },
   },
   ui = { backdrop = 100 },
-  -- Output options for headless mode
-  headless = {
-    -- show the output from process commands like git
-    process = true,
-    -- show log messages
-    log = true,
-    -- show task start/end
-    task = true,
-    -- use ansi colors
-    colors = true,
+  headless = { -- Output options for headless mode
+    process = true, -- show the output from process commands like git
+    log = true, -- show log messages
+    task = true, -- show task start/end
+    colors = true, -- use ansi colors
   },
   checker = {
-    -- automatically check for plugin updates
-    enabled = false,
+    enabled = true, -- automatically check for plugin updates
     concurrency = nil, ---@type number? set to 1 to check for updates very slowly
     notify = true, -- get a notification when new updates are found
     frequency = 3600, -- check for updates every hour
     check_pinned = false, -- check for pinned packages that can't be updated
   },
   change_detection = {
-    -- automatically check for config file changes and reload the ui
-    enabled = true,
+    enabled = true, -- automatically check for config file changes and reload the ui
     notify = true, -- get a notification when changes are found
-  }
+  },
   performance = {
     cache = {
       enabled = true,
@@ -110,22 +91,15 @@ require("lazy").setup({
   },
   -- lazy can generate helptags from the headings in markdown readme files,
   -- so :help works even for plugins that don't have vim docs.
-  -- when the readme opens with :help it will be correctly displayed as markdown
   readme = {
     enabled = true,
     root = vim.fn.stdpath("state") .. "/lazy/readme",
     files = { "README.md", "lua/**/README.md" },
-    -- only generate markdown helptags for plugins that don't have docs
-    skip_if_doc_exists = true,
+    skip_if_doc_exists = true, -- only generate markdown helptags for plugins that don't have docs
   },
   state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
-  -- Enable profiling of lazy.nvim. This will add some overhead,
-  -- so only enable this when you are debugging lazy.nvim
-  profiling = {
-    -- Enables extra stats on the debug tab related to the loader cache.
-    -- Additionally gathers stats about all package.loaders
-    loader = false,
-    -- Track each new require in the Lazy profiling tab
-    require = false,
+  profiling = {  -- Enable profiling of lazy.nvim.
+    loader = false, -- Enables extra stats on the debug tab related to the loader cache.
+    require = false, -- Track each new require in the Lazy profiling tab
   },
 } --[[@as LazyConfig]])
