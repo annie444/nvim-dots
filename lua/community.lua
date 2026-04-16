@@ -8,7 +8,6 @@ return {
 
   -- AI
   { import = "astrocommunity.ai.copilotchat-nvim" },
-  { import = "astrocommunity.ai.codecompanion-nvim" },
 
   -- Bars and Lines
   { import = "astrocommunity.bars-and-lines.scope-nvim" },
@@ -158,9 +157,6 @@ return {
   -- Registers
   { import = "astrocommunity.register.nvim-neoclip-lua" },
 
-  -- Remote Dev
-  { import = "astrocommunity.remote-development.remote-sshfs-nvim" },
-
   -- Scrolling and Animations
   { import = "astrocommunity.scrolling.mini-animate" },
 
@@ -170,7 +166,6 @@ return {
 
   -- Splits and Windows
   { import = "astrocommunity.split-and-window.minimap-vim" },
-  { import = "astrocommunity.split-and-window.windows-nvim" },
 
   -- Terminal support
   { import = "astrocommunity.terminal-integration.toggleterm-manager-nvim" },
@@ -184,8 +179,4 @@ return {
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.utility.mason-tool-installer-nvim" },
   { import = "astrocommunity.utility.vim-fetch" },
-
-  -- Workflow
-  { import = "astrocommunity.utility.hardtime-nvim" },
-  { import = "astrocommunity.utility.precognition-nvim" },
 }
