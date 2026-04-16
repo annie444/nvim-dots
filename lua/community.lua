@@ -19,7 +19,6 @@ return {
 
   -- Colors
   { import = "astrocommunity.color.nvim-highlight-colors" },
-  { import = "astrocommunity.color.vim-highlighter" },
 
   -- Color Scheme
   { import = "astrocommunity.colorscheme.dracula-nvim" },
@@ -35,11 +34,7 @@ return {
   -- Debugging
   { import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
 
-  -- Docker
-  { import = "astrocommunity.docker.lazydocker" },
-
   -- Editing Support
-  { import = "astrocommunity.editing-support.auto-save-nvim" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
   { import = "astrocommunity.editing-support.refactoring-nvim" },
@@ -61,9 +56,7 @@ return {
   { import = "astrocommunity.indent.snacks-indent-hlchunk" },
 
   -- LSP
-  { import = "astrocommunity.lsp.actions-preview-nvim" },
   { import = "astrocommunity.lsp.delimited-nvim" },
-  { import = "astrocommunity.lsp.dev-tools-nvim" },
   { import = "astrocommunity.lsp.lsplinks-nvim" },
   { import = "astrocommunity.lsp.lspsaga-nvim" },
   { import = "astrocommunity.lsp.nvim-lint" },
