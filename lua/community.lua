@@ -192,8 +192,6 @@ return {
   -- Utilities
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.utility.mason-tool-installer-nvim" },
-  { import = "astrocommunity.utility.telescope-lazy-nvim" },
-  { import = "astrocommunity.utility.telescope-live-grep-args-nvim" },
   { import = "astrocommunity.utility.vim-fetch" },
 
   -- Workflow
