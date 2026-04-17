@@ -142,9 +142,6 @@ return {
   {
     "okuuva/auto-save.nvim",
     event = { "User AstroFile", "InsertEnter" },
-    dependencies = {
-      "AstroNvim/astrocore",
-    },
     opts = {
       condition = function(buf)
         if vim.tbl_contains({
