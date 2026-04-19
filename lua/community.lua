@@ -25,7 +25,6 @@ return {
   -- Completion
   { import = "astrocommunity.completion.blink-cmp" },
   { import = "astrocommunity.completion.blink-cmp-emoji" },
-  { import = "astrocommunity.completion.blink-cmp-git" },
   { import = "astrocommunity.completion.blink-copilot" },
   { import = "astrocommunity.completion.cmp-nerdfont" },
   { import = "astrocommunity.completion.copilot-lua-cmp" },
