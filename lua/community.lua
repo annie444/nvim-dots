@@ -32,7 +32,6 @@ return {
   -- Editing Support
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
-  { import = "astrocommunity.editing-support.refactoring-nvim" },
   { import = "astrocommunity.editing-support.vim-visual-multi" },
 
   -- Fuzzy Finder
