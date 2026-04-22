@@ -38,6 +38,7 @@ return {
       LSPLoading9 = "⠇",
       LSPLoading10 = "⠏",
       Clock = "",
+      Refactoring = "󰣪",
     },
   },
 }
