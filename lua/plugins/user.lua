@@ -8,8 +8,14 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua",
+    cmd = "LazyDev",
     dependencies = { "DrKJeff16/wezterm-types" },
-    opts = function(_, opts) table.insert(opts.library, { path = "wezterm-types", mods = { "wezterm" } }) end,
+    opts_extend = { "library" },
+    opts = {
+      library = {
+        { path = "wezterm-types", mods = { "wezterm" } },
+      },
+    },
   },
   {
     "windwp/nvim-autopairs",
