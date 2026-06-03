@@ -6,8 +6,10 @@ return {
   { "Glench/Vim-Jinja2-Syntax", lazy = false },
   { "grafana/vim-alloy", lazy = false },
   {
-    "DrKJeff16/wezterm-types",
-    version = false,
+    "folke/lazydev.nvim",
+    ft = "lua",
+    dependencies = { "DrKJeff16/wezterm-types" },
+    opts = function(_, opts) table.insert(opts.library, { path = "wezterm-types", mods = { "wezterm" } }) end,
   },
   {
     "windwp/nvim-autopairs",
