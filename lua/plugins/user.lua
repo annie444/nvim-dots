@@ -6,6 +6,10 @@ return {
   { "Glench/Vim-Jinja2-Syntax", lazy = false },
   { "grafana/vim-alloy", lazy = false },
   {
+    "DrKJeff16/wezterm-types",
+    version = false,
+  },
+  {
     "windwp/nvim-autopairs",
     config = function(plugin, opts)
       require "astronvim.plugins.configs.nvim-autopairs"(plugin, opts) -- include the default astronvim config that calls the setup call
