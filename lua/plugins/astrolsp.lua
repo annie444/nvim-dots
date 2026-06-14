@@ -6,6 +6,9 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
+  dependencies = {
+    "nanotee/sqls.nvim",
+  },
   ---@type AstroLSPOpts
   opts = {
     -- Configuration table of features provided by AstroLSP
