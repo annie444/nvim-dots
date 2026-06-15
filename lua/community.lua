@@ -103,7 +103,6 @@ return {
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   { import = "astrocommunity.pack.ruby" },
   { import = "astrocommunity.pack.rust" },
-  { import = "astrocommunity.pack.sql" },
   { import = "astrocommunity.pack.svelte" },
   { import = "astrocommunity.pack.swift" },
   { import = "astrocommunity.pack.tailwindcss" },

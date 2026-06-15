@@ -33,6 +33,7 @@ return {
         -- see `:h vim.filetype.add` for usage
         extension = {
           bats = "bash",
+          pg = "sql",
         },
       },
       -- vim options can be configured here
@@ -186,6 +187,7 @@ return {
           "typst",
           "bash",
           "regex",
+          "sql",
         },
       },
       autocmds = {

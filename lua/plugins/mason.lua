@@ -19,6 +19,8 @@ return {
 
         -- install any other package
         "tree-sitter-cli",
+        "sqlfluff",
+        "sqlls",
       })
     end,
   },
