@@ -8,60 +8,88 @@ return {
   "AstroNvim/astrolsp",
   dependencies = {
     "nanotee/sqls.nvim",
+    "b0o/schemastore.nvim",
   },
-  ---@type AstroLSPOpts
-  opts = {
+  ---@param opts AstroLSPOpts
+  opts = function(_, opts)
     -- Configuration table of features provided by AstroLSP
-    features = {
-      codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = true, -- enable/disable inlay hints on start
-      semantic_tokens = true, -- enable/disable semantic token highlighting
-      signature_help = true, -- enable/disable signature help on start
-    },
-    formatting = {
-      format_on_save = {
-        enabled = true, -- enable/disable autoformatting on save
+    ---@type AstroLSPOpts
+    local custom = {
+      features = {
+        codelens = true, -- enable/disable codelens refresh on start
+        inlay_hints = true, -- enable/disable inlay hints on start
+        semantic_tokens = true, -- enable/disable semantic token highlighting
+        signature_help = true, -- enable/disable signature help on start
       },
-      timeout_ms = 10000, -- set timeout for formatting requests in milliseconds
-    },
-    defaults = { hover = false, signature_help = false }, -- disable hover and signature help so noice can handle them
-    -- first key is the `augroup` to add the auto commands to (:h augroup)
-    autocmds = {
-      lsp_codelens_refresh = {
-        -- Optional condition to create/delete auto command group
-        -- can either be a string of a client capability or a function of `fun(client, bufnr): boolean`
-        -- condition will be resolved for each client on each execution and if it ever fails for all clients,
-        -- the auto commands will be deleted for that buffer
-        cond = "textDocument/codeLens",
-        -- cond = function(client, bufnr) return client.name == "lua_ls" end,
-        -- list of auto commands to set
-        {
-          -- events to trigger
-          event = { "InsertLeave", "BufEnter" },
-          -- the rest of the autocmd options (:h nvim_create_autocmd)
-          desc = "Refresh codelens (buffer)",
-          callback = function(args)
-            if require("astrolsp").config.features.codelens then vim.lsp.codelens.enable(true, { bufnr = args.buf }) end
+      formatting = {
+        format_on_save = {
+          enabled = true, -- enable/disable autoformatting on save
+        },
+        timeout_ms = 10000, -- set timeout for formatting requests in milliseconds
+      },
+      defaults = { hover = false, signature_help = false }, -- disable hover and signature help so noice can handle them
+      -- first key is the `augroup` to add the auto commands to (:h augroup)
+      autocmds = {
+        lsp_codelens_refresh = {
+          -- Optional condition to create/delete auto command group
+          -- can either be a string of a client capability or a function of `fun(client, bufnr): boolean`
+          -- condition will be resolved for each client on each execution and if it ever fails for all clients,
+          -- the auto commands will be deleted for that buffer
+          cond = "textDocument/codeLens",
+          -- cond = function(client, bufnr) return client.name == "lua_ls" end,
+          -- list of auto commands to set
+          {
+            -- events to trigger
+            event = { "InsertLeave", "BufEnter" },
+            -- the rest of the autocmd options (:h nvim_create_autocmd)
+            desc = "Refresh codelens (buffer)",
+            callback = function(args)
+              if require("astrolsp").config.features.codelens then
+                vim.lsp.codelens.enable(true, { bufnr = args.buf })
+              end
+            end,
+          },
+        },
+      },
+      mappings = {
+        n = {
+          -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
+          gD = {
+            function() vim.lsp.buf.declaration() end,
+            desc = "Declaration of current symbol",
+            cond = "textDocument/declaration",
+          },
+          ["<Leader>uY"] = {
+            function() require("astrolsp.toggles").buffer_semantic_tokens() end,
+            desc = "Toggle LSP semantic highlight (buffer)",
+            cond = function(client)
+              return client:supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
+            end,
+          },
+        },
+      },
+      config = {
+        yamlls = {
+          on_new_config = function(config)
+            config.settings.yaml.schemas =
+              vim.tbl_deep_extend("force", config.settings.yaml.schemas or {}, require("schemastore").yaml.schemas())
           end,
+          settings = {
+            yaml = {
+              schemaStore = {
+                enable = false,
+                url = "",
+              },
+              schemas = require("schemastore").yaml.schemas(),
+            },
+          },
+        },
+        json = {
+          schemas = require("schemastore").json.schemas(),
+          validate = { enable = true },
         },
       },
-    },
-    mappings = {
-      n = {
-        -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
-        gD = {
-          function() vim.lsp.buf.declaration() end,
-          desc = "Declaration of current symbol",
-          cond = "textDocument/declaration",
-        },
-        ["<Leader>uY"] = {
-          function() require("astrolsp.toggles").buffer_semantic_tokens() end,
-          desc = "Toggle LSP semantic highlight (buffer)",
-          cond = function(client)
-            return client:supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
-          end,
-        },
-      },
-    },
-  },
+    }
+    return require("astrocore").extend_tbl(opts or {}, custom)
+  end,
 }

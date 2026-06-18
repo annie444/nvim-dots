@@ -21,6 +21,7 @@ return {
         "tree-sitter-cli",
         "sqlfluff",
         "sqlls",
+        "slint-lsp",
       })
     end,
   },
