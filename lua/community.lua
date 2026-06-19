@@ -134,7 +134,7 @@ return {
   { import = "astrocommunity.search.nvim-hlslens" },
 
   -- Splits and Windows
-  { import = "astrocommunity.split-and-window.minimap-vim" },
+  { import = "astrocommunity.split-and-window.mini-map" },
 
   -- Terminal support
   { import = "astrocommunity.terminal-integration.toggleterm-manager-nvim" },
