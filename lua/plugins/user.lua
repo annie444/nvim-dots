@@ -195,4 +195,84 @@ return {
         require("astrocore").list_insert_unique(opts.ensure_installed, { "yamllint", "slint_lsp" })
     end,
   },
+  {
+    "pwntester/octo.nvim",
+    cmd = "Octo",
+    opts = {
+      -- or "fzf-lua" or "snacks" or "default"
+      picker = "snacks",
+      -- bare Octo command opens picker of commands
+      enable_builtin = true,
+      picker_config = {
+        search_static = true, -- Whether to use static search results (true) or dynamic search (false)
+        mappings = { -- mappings for the pickers
+          open_in_browser = { lhs = "<C-b>", desc = "open issue in browser" },
+          copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+          copy_sha = { lhs = "<C-e>", desc = "copy commit SHA to system clipboard" },
+          checkout_pr = { lhs = "<C-o>", desc = "checkout pull request" },
+          merge_pr = { lhs = "<C-r>", desc = "merge pull request" },
+        },
+        snacks = { -- snacks specific config
+          -- Initialize actions as empty arrays
+          actions = { -- custom actions for specific snacks pickers (array of tables)
+            issues = { -- actions for the issues picker
+              -- { name = "my_issue_action", fn = function(picker, item) print("Issue action:", vim.inspect(item)) end, lhs = "<leader>a", desc = "My custom issue action" },
+            },
+            pull_requests = { -- actions for the pull requests picker
+              -- { name = "my_pr_action", fn = function(picker, item) print("PR action:", vim.inspect(item)) end, lhs = "<leader>b", desc = "My custom PR action" },
+            },
+            notifications = {}, -- actions for the notifications picker
+            issue_templates = {}, -- actions for the issue templates picker
+            search = {}, -- actions for the search picker
+            -- ... add actions for other pickers as needed
+            changed_files = {},
+            commits = {},
+            review_commits = {},
+          },
+        },
+        default_merge_method = "merge", -- default merge method which should be used for both `Octo pr merge` and merging from picker, could be `merge`, `rebase` or `squash`
+        poll = {
+          enabled = true, -- opt-in polling for remote changes
+          interval = 10000, -- polling interval in milliseconds (default: 10s)
+          notify_on_refresh = true, -- notify when a buffer is auto-refreshed
+          notify_on_change = true, -- notify when remote changed but buffer has local edits
+        },
+        file_panel = {
+          icons = function(name, _) return require("mini.icons").get("file", name) end,
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>oi",
+        "<CMD>Octo issue list<CR>",
+        desc = "List GitHub Issues",
+      },
+      {
+        "<leader>op",
+        "<CMD>Octo pr list<CR>",
+        desc = "List GitHub PullRequests",
+      },
+      {
+        "<leader>od",
+        "<CMD>Octo discussion list<CR>",
+        desc = "List GitHub Discussions",
+      },
+      {
+        "<leader>on",
+        "<CMD>Octo notification list<CR>",
+        desc = "List GitHub Notifications",
+      },
+      {
+        "<leader>os",
+        function() require("octo.utils").create_base_search_command { include_current_repo = true } end,
+        desc = "Search GitHub",
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "folke/snacks.nvim",
+      "nvim-mini/mini.icons",
+    },
+  },
 }
