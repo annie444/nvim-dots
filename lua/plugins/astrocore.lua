@@ -212,6 +212,19 @@ return {
         },
       },
       autocmds = {
+        minimap_toggle = {
+          {
+            event = "BufEnter",
+            dest = "Default mini.map to open",
+            callback = function(args)
+              local buftype = vim.bo[args.buf].buftype
+              -- Skip special buffers
+              if buftype ~= "" then return end
+              local MiniMap = require "mini.map"
+              MiniMap.open()
+            end,
+          },
+        },
         autoformat_toggle = {
           -- Disable autoformat before saving
           {
