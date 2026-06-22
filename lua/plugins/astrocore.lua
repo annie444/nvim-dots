@@ -9,6 +9,14 @@ return {
   ---@param opts AstroCoreOpts
   opts = function(_, opts)
     local get_icon = require("astroui").get_icon
+    local group = vim.api.nvim_create_augroup("UserMiniMap", { clear = true })
+    vim.api.nvim_create_autocmd("BufEnter", {
+      group = group,
+      callback = function(args)
+        local MiniMap = require "mini.map"
+        if vim.bo[args.buf].buftype == "" and not MiniMap.current.win_data then MiniMap.open() end
+      end,
+    })
     return require("astrocore").extend_tbl(opts or {}, {
       -- Configure core features of AstroNvim
       features = {
@@ -212,19 +220,6 @@ return {
         },
       },
       autocmds = {
-        minimap_toggle = {
-          {
-            event = "BufEnter",
-            dest = "Default mini.map to open",
-            callback = function(args)
-              local buftype = vim.bo[args.buf].buftype
-              -- Skip special buffers
-              if buftype ~= "" then return end
-              local MiniMap = require "mini.map"
-              MiniMap.open()
-            end,
-          },
-        },
         autoformat_toggle = {
           -- Disable autoformat before saving
           {
