@@ -126,6 +126,7 @@ return {
         },
 
         x = {
+          ["p"] = { '"zdP', desc = "Paste and save replaced text to register z" },
           ["<Leader>r"] = { desc = get_icon("Refactoring", 1, true) .. "Refactor" },
           ["<Leader>re"] = {
             function() require("refactoring").refactor "Extract Function" end,
