@@ -123,6 +123,23 @@ return {
             function() require("octo.utils").create_base_search_command { include_current_repo = true } end,
             desc = "Search GitHub",
           },
+          ["<Leader>D"] = { desc = "󱚟 Direnv" },
+          ["<Leader>De"] = {
+            function() require("direnv").edit_envrc() end,
+            desc = "Edit .envrc",
+          },
+          ["<Leader>Dc"] = {
+            function() require("direnv").check_direnv() end,
+            desc = "Show .envrc",
+          },
+          ["<Leader>Da"] = {
+            function() require("direnv").allow_direnv() end,
+            desc = "Allow .envrc",
+          },
+          ["<Leader>Dd"] = {
+            function() require("direnv").deny_direnv() end,
+            desc = "Allow .envrc",
+          },
         },
 
         x = {

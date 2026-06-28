@@ -3,6 +3,20 @@
 
 ---@type LazySpec
 return {
+  {
+    "NotAShelf/direnv.nvim",
+    lazy = false,
+    config = function()
+      require("direnv").setup {
+        bin = "direnv",
+        autoload_direnv = false,
+        notifications = {
+          level = vim.log.levels.INFO,
+          silent_autoload = false,
+        },
+      }
+    end,
+  },
   { "Glench/Vim-Jinja2-Syntax", lazy = false },
   { "grafana/vim-alloy", lazy = false },
   {
