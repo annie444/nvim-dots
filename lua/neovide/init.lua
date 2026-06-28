@@ -1,5 +1,5 @@
 --- font
-vim.o.guifont = "JetBrainsMono Nerd Font Propo:W300:h14"
+vim.o.guifont = "JetBrainsMono Nerd Font Propo:w300:h14"
 
 --- line spacing
 vim.opt.linespace = 0
