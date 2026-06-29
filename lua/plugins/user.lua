@@ -24,6 +24,7 @@ return {
     "lalitmee/browse.nvim",
     cmd = { "Browse" },
     dependencies = { "nvim-telescope/telescope.nvim" },
+    lazy = false,
     opts = {
       provider = "google",
       bookmarks = {},
