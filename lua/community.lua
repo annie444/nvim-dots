@@ -13,6 +13,9 @@ return {
   { import = "astrocommunity.bars-and-lines.scope-nvim" },
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
 
+  -- Note taking
+  { import = "astrocommunity.note-taking.neorg" },
+
   -- Code Runner
   { import = "astrocommunity.code-runner.overseer-nvim" },
 
