@@ -19,6 +19,52 @@ return {
   },
   { "Glench/Vim-Jinja2-Syntax", lazy = false },
   { "grafana/vim-alloy", lazy = false },
+  { "glacambre/firenvim", build = ":call firenvim#install(0)" },
+  {
+    "lalitmee/browse.nvim",
+    cmd = { "Browse" },
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    opts = {
+      provider = "google",
+      bookmarks = {},
+      bookmark_files = {
+        vim.env.HOME .. "/.config/browse/bookmarks.yaml",
+      },
+      browser_bookmarks = {
+        enabled = true,
+        browsers = {
+          chrome = false,
+          firefox = true,
+          safari = true,
+          edge = false,
+        },
+        group_by_folder = true,
+        auto_detect = false,
+      },
+      deduplicate_bookmarks = true,
+      cache_bookmarks = true,
+      cache_duration = 60,
+      create_commands = true,
+      themes = {
+        browse = "dropdown",
+        manual_bookmarks = "dropdown",
+        browser_bookmarks = nil, -- nil uses the default Telescope theme
+      },
+      icons = {
+        bookmark_alias = "->",
+        bookmarks_prompt = "",
+        grouped_bookmarks = "->",
+        file_bookmark = "",
+        browser_bookmark = "",
+      },
+      persist_grouped_bookmarks_query = false,
+      bookmark_picker = {
+        show_nested = true,
+      },
+      cache_pickers = 10,
+      sort_results = true,
+    },
+  },
   {
     "folke/lazydev.nvim",
     ft = "lua",
