@@ -213,20 +213,11 @@ return {
   {
     "folke/snacks.nvim",
     specs = {
-      ---@type snacks.Config
       {
-        ---@type snacks.picker.Config
         picker = {
           win = {
-            list = {
-              wo = {
-                wrap = true,
-              },
-            },
-            preview = {
-              wo = {
-                wrap = true,
-              },
+            wo = {
+              wrap = true,
             },
           },
         },
