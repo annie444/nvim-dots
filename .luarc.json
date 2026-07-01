@@ -1,3 +1,10 @@
 {
-  "format.enable": false
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "format.enable": false,
+  "workspace.library": [
+    "$VIMRUNTIME",
+    "$XDG_DATA_HOME/nvim/lazy",
+    "$HOME/.local/share/nvim/lazy",
+    "${3rd}/luv/library"
+  ]
 }

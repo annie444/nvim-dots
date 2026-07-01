@@ -211,6 +211,29 @@ return {
     end,
   },
   {
+    "folke/snacks.nvim",
+    specs = {
+      ---@type snacks.Config
+      {
+        ---@type snacks.picker.Config
+        picker = {
+          win = {
+            list = {
+              wo = {
+                wrap = true,
+              },
+            },
+            preview = {
+              wo = {
+                wrap = true,
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     "pwntester/octo.nvim",
     cmd = "Octo",
     opts = {
