@@ -29,15 +29,16 @@ return {
               desc = "Disk Usage",
               action = function()
                 local astro = require "astrocore"
-                local gdu = "gdu"
-                if vim.fn.executable(gdu) ~= 1 then
-                  if vim.fn.has "win32" == 1 then
-                    gdu = "gdu_windows_amd64.exe"
-                  elseif vim.fn.has "mac" == 1 then
-                    gdu = "gdu-go"
-                  end
+                local cmd = ""
+                local dudust = "du-dust"
+                local du = "du"
+                if vim.fn.executable(dudust) ~= 1 then
+                  cmd = dudust
+                elseif vim.fn.executable(du) ~= 1 then
+                  cmd = du
                 end
-                astro.toggle_term_cmd { cmd = gdu, direction = "float" }
+                if vim.fn.has "win32" == 1 then cmd = cmd .. ".exe" end
+                astro.toggle_term_cmd { cmd = cmd, direction = "float" }
               end,
             },
             {
@@ -46,12 +47,11 @@ return {
               desc = "Resouce Usage",
               action = function()
                 local astro = require "astrocore"
-                astro.toggle_term_cmd { cmd = "btm", direction = "float" }
+                astro.toggle_term_cmd { cmd = "btop", direction = "float" }
               end,
             },
             { icon = " ", key = "s", desc = "Restore Session", section = "session" },
             { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
           header = [[
                                                     
@@ -91,15 +91,6 @@ return {
             local in_git = Snacks.git.get_root() ~= nil
             local cmds = {
               {
-                title = "Notifications",
-                cmd = "gh notify -s -a -n5",
-                action = function() vim.ui.open "https://github.com/notifications" end,
-                key = "n",
-                icon = " ",
-                height = 5,
-                enabled = true,
-              },
-              {
                 title = "Open Issues",
                 cmd = "gh issue list -L 3",
                 key = "i",
@@ -119,7 +110,7 @@ return {
                 icon = " ",
                 title = "Git Status",
                 cmd = "git --no-pager diff --stat -B -M -C",
-                height = 10,
+                height = 15,
               },
             }
             return vim.tbl_map(
