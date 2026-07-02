@@ -45,10 +45,10 @@ return {
               action = function()
                 local astro = require "astrocore"
                 local cmd = ""
-                local dudust = "du-dust"
+                local dust = "dust"
                 local du = "du"
-                if vim.fn.executable(dudust) ~= 1 then
-                  cmd = dudust
+                if vim.fn.executable(dust) ~= 1 then
+                  cmd = dust
                 elseif vim.fn.executable(du) ~= 1 then
                   cmd = du
                 end
