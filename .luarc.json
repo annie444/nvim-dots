@@ -5,9 +5,8 @@
     "$VIMRUNTIME",
     "$XDG_DATA_HOME/nvim/lazy",
     "$HOME/.local/share/nvim/lazy",
-    "${3rd}/luv/library",
+    "$HOME/.local/share/nvim/runtime/lua",
     "/opt/homebrew/opt/nvim/share/nvim/runtime/lua",
-    "$HOME/.dotfiles/nvim-dots/lua",
     "$HOME/.local/share/nvim/lazy/lazy.nvim/lua",
     "$HOME/.local/share/nvim/lazy/direnv.nvim/lua",
     "$HOME/.local/share/nvim/lazy/AstroNvim/lua",
@@ -17,6 +16,8 @@
     "$HOME/.local/share/nvim/lazy/none-ls.nvim/lua",
     "$HOME/.local/share/nvim/lazy/mini.icons/lua",
     "$HOME/.local/share/nvim/lazy/snacks.nvim/lua",
-    "$HOME/.config/nvim/lua"
+    "$HOME/.dotfiles/nvim-dots/lua",
+    "$HOME/.config/nvim/lua",
+    "${3rd}/luv/library"
   ]
 }
