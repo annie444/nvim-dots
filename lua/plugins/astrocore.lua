@@ -143,7 +143,16 @@ return {
         },
 
         x = {
-          ["p"] = { '"zdP', desc = "Paste and save replaced text to register z" },
+          ["p"] = {
+            function()
+              local text = vim.fn.getregion(vim.fn.getpos "v", vim.fn.getpos ".", {
+                type = vim.fn.mode(),
+              })
+              vim.fn.setreg("r", text, vim.fn.mode())
+              return '"' .. vim.v.register .. "P"
+            end,
+            desc = "Paste over selection, save replaced text to @r",
+          },
           ["<Leader>r"] = { desc = get_icon("Refactoring", 1, true) .. "Refactor" },
           ["<Leader>re"] = {
             function() require("refactoring").refactor "Extract Function" end,
