@@ -7,7 +7,7 @@ return {
   "AstroNvim/astrocommunity",
 
   -- AI
-  { import = "astrocommunity.ai.copilotchat-nvim" },
+  -- { import = "astrocommunity.ai.copilotchat-nvim" }, -- disabled for interview
 
   -- Bars and Lines
   { import = "astrocommunity.bars-and-lines.scope-nvim" },
@@ -25,9 +25,9 @@ return {
   -- Completion
   { import = "astrocommunity.completion.blink-cmp" },
   { import = "astrocommunity.completion.blink-cmp-emoji" },
-  { import = "astrocommunity.completion.blink-copilot" },
+  -- { import = "astrocommunity.completion.blink-copilot" }, -- disabled for interview
   { import = "astrocommunity.completion.cmp-nerdfont" },
-  { import = "astrocommunity.completion.copilot-lua-cmp" },
+  -- { import = "astrocommunity.completion.copilot-lua-cmp" }, -- disabled for interview
 
   -- Editing Support
   { import = "astrocommunity.editing-support.neogen" },
